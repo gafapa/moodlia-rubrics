@@ -1,0 +1,91 @@
+{
+  "extensionName": {
+    "message": "MoodlIA Rubrics para Moodle"
+  },
+  "extensionDescription": {
+    "message": "Importa rúbricas do Moodle a partir de ficheiros CSV."
+  },
+  "dropZoneTitle": {
+    "message": "Importar uma rúbrica de CSV"
+  },
+  "dropZoneStrong": {
+    "message": "Clique para selecionar"
+  },
+  "dropZoneText": {
+    "message": " ou arraste e solte aqui um ficheiro CSV"
+  },
+  "startingImport": {
+    "message": "A iniciar a importação..."
+  },
+  "importCompleted": {
+    "message": "Importação concluída com sucesso."
+  },
+  "importError": {
+    "message": "Erro ao importar a rúbrica: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "readFileError": {
+    "message": "Erro ao ler o ficheiro"
+  },
+  "selectFileError": {
+    "message": "Erro ao selecionar o ficheiro"
+  },
+  "invalidFileType": {
+    "message": "Tipo de ficheiro inválido. Largue um ficheiro CSV."
+  },
+  "optionsDocumentTitle": {
+    "message": "Definições do MoodlIA Rubrics"
+  },
+  "optionsEyebrow": {
+    "message": "Acesso ao Moodle"
+  },
+  "optionsTitle": {
+    "message": "Sites Moodle permitidos"
+  },
+  "optionsIntro": {
+    "message": "Adicione cada site Moodle onde o MoodlIA Rubrics deve ser executado automaticamente. A extensão só é ativada nos hosts permitidos aqui."
+  },
+  "optionsInputLabel": {
+    "message": "URL do Moodle"
+  },
+  "optionsInputPlaceholder": {
+    "message": "https://campus.example.edu/moodle"
+  },
+  "optionsAddHost": {
+    "message": "Adicionar site"
+  },
+  "optionsInputHint": {
+    "message": "Pode colar o URL inicial do Moodle ou um URL do editor de rúbricas. O MoodlIA Rubrics detetará automaticamente o caminho base."
+  },
+  "optionsCurrentHostsTitle": {
+    "message": "Sites configurados"
+  },
+  "optionsEmpty": {
+    "message": "Ainda não existem sites Moodle configurados."
+  },
+  "optionsRemove": {
+    "message": "Remover"
+  },
+  "optionsInvalidUrl": {
+    "message": "Introduza um URL Moodle válido."
+  },
+  "optionsPermissionDenied": {
+    "message": "A permissão não foi concedida para esse host."
+  },
+  "optionsRequestSuccess": {
+    "message": "Site Moodle adicionado com sucesso."
+  },
+  "optionsRemoved": {
+    "message": "Site Moodle removido com sucesso."
+  },
+  "optionsBuiltIn": {
+    "message": "Inclu?do"
+  },
+  "optionsAlreadyBuiltIn": {
+    "message": "Este site Moodle j? est? inclu?do por predefini??o."
+  }
+}

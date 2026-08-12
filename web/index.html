@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="meta.indexTitle">Rubricando para Moodle</title>
+    <meta
+      name="description"
+      content="Rubricando para Moodle es una extensión que importa rúbricas de Moodle desde archivos CSV."
+      data-i18n-attr="content:meta.indexDescription"
+    >
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png">
+    <link rel="apple-touch-icon" href="assets/icon-128.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-i18n-attr="aria-label:nav.main">
+      <a class="brand" href="#top" data-i18n-attr="aria-label:nav.homeLabel">
+        <img src="assets/icon-128.png" alt="" width="36" height="36">
+        <span>Rubricando para Moodle</span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" data-i18n-attr="aria-label:nav.sections">
+          <a href="#workflow" data-i18n="nav.workflow">Flujo</a>
+          <a href="#format" data-i18n="nav.format">Formato CSV</a>
+          <a href="#ai-prompt" data-i18n="nav.prompt">Prompt IA</a>
+          <a href="#install" data-i18n="nav.install">Instalación</a>
+          <a href="privacy-policy.html" data-i18n="nav.privacy">Privacidad</a>
+        </nav>
+        <label class="language-switcher">
+          <span class="sr-only" data-i18n="language.label">Idioma</span>
+          <select data-language-select data-i18n-attr="aria-label:language.label">
+            <option value="es">ES</option>
+            <option value="gl">GL</option>
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="pt">PT</option>
+            <option value="de">DE</option>
+            <option value="ca">CA</option>
+            <option value="eu">EU</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="index.heroEyebrow">Importación CSV para el editor de rúbricas de Moodle</p>
+          <h1 data-i18n="index.heroTitle">Crea rúbricas de Moodle desde un CSV en lugar de rellenar cada celda a mano.</h1>
+          <p data-i18n="index.heroText">
+            Rubricando para Moodle añade una capa de importación ligera sobre el editor de rúbricas de Moodle.
+            Suelta un CSV, revisa la estructura y deja que la extensión complete criterios, descripciones de nivel
+            y puntuaciones directamente en la página que ya usas.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button primary"
+              href="{{CHROME_WEB_STORE_URL}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="index.installCta"
+            >Instalar desde Chrome Web Store</a>
+            <a class="button secondary" href="#format" data-i18n="index.formatCta">Ver formato CSV</a>
+          </div>
+          <ul class="hero-points" data-i18n-attr="aria-label:index.heroPointsLabel">
+            <li data-i18n="index.pointOne">Funciona directamente dentro de las páginas de edición de rúbricas de Moodle</li>
+            <li data-i18n="index.pointTwo">Acepta archivos CSV simples con dos filas por criterio</li>
+            <li data-i18n="index.pointThree">Mantiene la extensión ligera con un parser CSV nativo</li>
+          </ul>
+        </div>
+
+        <figure class="hero-preview">
+          <img
+            src="assets/showcase/workflow-import.png"
+            alt="Zona de importación de Rubricando dentro de una página de edición de rúbricas de Moodle"
+            width="1280"
+            height="800"
+            data-i18n-attr="alt:index.heroImageAlt"
+          >
+        </figure>
+      </section>
+
+      <section id="workflow" class="section workflow-section">
+        <div class="section-heading">
+          <h2 data-i18n="index.workflowTitle">Así funciona</h2>
+          <p data-i18n="index.workflowText">Hay dos momentos clave: importar el CSV y terminar con una rúbrica ya estructurada dentro de Moodle.</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="shot-card">
+            <div class="shot-copy">
+              <span class="shot-step">01</span>
+              <h3 data-i18n="index.stepOneTitle">Suelta el CSV sobre el editor de rúbricas</h3>
+              <p data-i18n="index.stepOneText">
+                La extensión inserta una zona de importación visible en las URLs compatibles del editor de rúbricas
+                de Moodle, así que la importación empieza exactamente donde se está editando la rúbrica.
+              </p>
+            </div>
+            <img
+              src="assets/showcase/workflow-import.png"
+              alt="Interfaz de importación CSV insertada en el editor de rúbricas de Moodle"
+              width="1280"
+              height="800"
+              data-i18n-attr="alt:index.stepOneAlt"
+            >
+          </article>
+
+          <article class="shot-card">
+            <div class="shot-copy">
+              <span class="shot-step">02</span>
+              <h3 data-i18n="index.stepTwoTitle">Rellena criterios, niveles y puntuaciones</h3>
+              <p data-i18n="index.stepTwoText">
+                Una vez interpretado el archivo, Rubricando completa el formulario de la rúbrica con la estructura
+                importada y muestra un mensaje de confirmación directamente en la página.
+              </p>
+            </div>
+            <img
+              src="assets/showcase/workflow-result.png"
+              alt="Contenido de la rúbrica importado en Moodle con confirmación de éxito"
+              width="1280"
+              height="800"
+              data-i18n-attr="alt:index.stepTwoAlt"
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="format" class="section format-section">
+        <div class="section-heading">
+          <h2 data-i18n="index.formatTitle">Cómo debe estructurarse el CSV</h2>
+          <p data-i18n="index.formatText">El formato es deliberadamente simple. Cada criterio ocupa dos filas y crece hacia la derecha.</p>
+        </div>
+        <div class="format-layout">
+          <article class="format-panel">
+            <h3 data-i18n="index.rulesTitle">Reglas</h3>
+            <ul class="format-list">
+              <li data-i18n="index.ruleOne">La columna <code>A</code> contiene el nombre del criterio.</li>
+              <li data-i18n="index.ruleTwo">Cada criterio usa exactamente dos filas.</li>
+              <li data-i18n="index.ruleThree">Desde la columna <code>B</code> en adelante van las descripciones de nivel en la primera fila.</li>
+              <li data-i18n="index.ruleFour">La fila inferior contiene la puntuación numérica de cada nivel.</li>
+              <li data-i18n="index.ruleFive">La importación se detiene al encontrar una celda vacía de criterio en la columna <code>A</code>.</li>
+            </ul>
+          </article>
+
+          <article class="format-panel csv-panel">
+            <h3 data-i18n="index.csvTitle">Ejemplo CSV</h3>
+            <pre><code data-i18n="index.csvExample">Claridad,Insuficiente,Adecuado,Excelente
+,1,3,5
+Argumentación,Débil,Correcta,Sólida
+,2,4,6</code></pre>
+          </article>
+
+          <article class="format-panel table-panel">
+            <h3 data-i18n="index.mapTitle">Mapa visual</h3>
+            <div class="format-table" data-i18n-attr="aria-label:index.mapLabel">
+              <div></div>
+              <div>A</div>
+              <div>B</div>
+              <div>C</div>
+              <div>D</div>
+              <div>1</div>
+              <div data-i18n="index.mapCriterion">Criterio</div>
+              <div data-i18n="index.mapLevelText">Texto nivel</div>
+              <div data-i18n="index.mapLevelText">Texto nivel</div>
+              <div data-i18n="index.mapLevelText">Texto nivel</div>
+              <div>2</div>
+              <div></div>
+              <div data-i18n="index.mapPoints">Puntos</div>
+              <div data-i18n="index.mapPoints">Puntos</div>
+              <div data-i18n="index.mapPoints">Puntos</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="ai-prompt" class="section prompt-section">
+        <div class="section-heading">
+          <h2 data-i18n="index.promptTitle">Genera rúbricas con IA en el formato correcto</h2>
+          <p data-i18n="index.promptText">
+            Puedes pedir a una IA que prepare la rúbrica directamente como CSV compatible con Rubricando.
+            Ajusta la actividad, el nivel educativo, los criterios y las puntuaciones antes de usarlo.
+          </p>
+        </div>
+        <div class="prompt-layout">
+          <article class="prompt-panel">
+            <h3 data-i18n="index.promptCardTitle">Prompt recomendado</h3>
+            <pre><code data-i18n="index.promptExample">Actúa como especialista en evaluación educativa.
+Crea una rúbrica para: [actividad].
+Nivel educativo: [nivel].
+Número de criterios: [número].
+Niveles de desempeño: [nombres de niveles y puntuaciones].
+
+Devuelve únicamente CSV válido, sin Markdown, sin encabezados y sin explicación.
+Formato obligatorio:
+- Cada criterio ocupa dos filas.
+- En la primera fila, columna A: nombre del criterio; columnas B en adelante: descripciones de nivel.
+- En la segunda fila, columna A vacía; columnas B en adelante: puntuaciones numéricas.
+- Usa coma como separador.
+- Si algún texto contiene comas, encierra esa celda entre comillas dobles.</code></pre>
+          </article>
+          <article class="prompt-note">
+            <h3 data-i18n="index.promptNoteTitle">Antes de importar</h3>
+            <p data-i18n="index.promptNoteText">
+              Revisa el CSV en una hoja de cálculo antes de importarlo. La extensión espera dos filas por criterio:
+              una con descripciones y otra con puntuaciones.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section features-section">
+        <div class="section-heading">
+          <h2 data-i18n="index.featuresTitle">Por qué se usa</h2>
+          <p data-i18n="index.featuresText">Está diseñada con foco: una sola tarea, resuelta directamente dentro del flujo de Moodle.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3 data-i18n="index.featureOneTitle">Preparación rápida</h3>
+            <p data-i18n="index.featureOneText">Prepara la estructura de la rúbrica en un CSV y evita reconstruir cada nivel manualmente dentro de Moodle.</p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="index.featureTwoTitle">Huella ligera</h3>
+            <p data-i18n="index.featureTwoText">No incluye librerías de hojas de cálculo de terceros, lo que mantiene el paquete pequeño y directo.</p>
+          </article>
+          <article class="feature-card">
+            <h3 data-i18n="index.featureThreeTitle">Interfaz localizada</h3>
+            <p data-i18n="index.featureThreeText">Incluye inglés, español, francés, alemán, portugués, gallego, catalán y euskera.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="install" class="download-section">
+        <div>
+          <h2 data-i18n="index.installTitle">Lista para instalar</h2>
+          <p data-i18n="index.installText">
+            La versión {{EXTENSION_VERSION}} se instala desde Chrome Web Store.
+          </p>
+        </div>
+        <div class="download-actions">
+          <a
+            class="button primary"
+            href="{{CHROME_WEB_STORE_URL}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="index.storeCta"
+          >Abrir en Chrome Web Store</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="privacy-policy.html" data-i18n="footer.privacy">Política de privacidad</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "extensionName": {
+    "message": "MoodlIA Rubrics per a Moodle"
+  },
+  "extensionDescription": {
+    "message": "Importa rúbriques de Moodle des de fitxers CSV."
+  },
+  "dropZoneTitle": {
+    "message": "Importa una rúbrica des de CSV"
+  },
+  "dropZoneStrong": {
+    "message": "Fes clic per seleccionar"
+  },
+  "dropZoneText": {
+    "message": " o arrossega i deixa anar aquí un fitxer CSV"
+  },
+  "startingImport": {
+    "message": "Iniciant la importació..."
+  },
+  "importCompleted": {
+    "message": "Importació completada correctament."
+  },
+  "importError": {
+    "message": "Error en importar la rúbrica: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "readFileError": {
+    "message": "Error en llegir el fitxer"
+  },
+  "selectFileError": {
+    "message": "Error en seleccionar el fitxer"
+  },
+  "invalidFileType": {
+    "message": "Tipus de fitxer no vàlid. Deixa anar un fitxer CSV."
+  },
+  "optionsDocumentTitle": {
+    "message": "Configuració de MoodlIA Rubrics"
+  },
+  "optionsEyebrow": {
+    "message": "Accés a Moodle"
+  },
+  "optionsTitle": {
+    "message": "Llocs de Moodle permesos"
+  },
+  "optionsIntro": {
+    "message": "Afegeix cada lloc de Moodle on MoodlIA Rubrics s'hagi d'executar automàticament. L'extensió només s'activa als hosts que permets aquí."
+  },
+  "optionsInputLabel": {
+    "message": "URL de Moodle"
+  },
+  "optionsInputPlaceholder": {
+    "message": "https://campus.example.edu/moodle"
+  },
+  "optionsAddHost": {
+    "message": "Afegeix lloc"
+  },
+  "optionsInputHint": {
+    "message": "Pots enganxar l'URL principal de Moodle o una URL de l'editor de rúbriques. MoodlIA Rubrics detectarà la ruta base automàticament."
+  },
+  "optionsCurrentHostsTitle": {
+    "message": "Llocs configurats"
+  },
+  "optionsEmpty": {
+    "message": "Encara no hi ha cap lloc de Moodle configurat."
+  },
+  "optionsRemove": {
+    "message": "Elimina"
+  },
+  "optionsInvalidUrl": {
+    "message": "Introdueix una URL de Moodle vàlida."
+  },
+  "optionsPermissionDenied": {
+    "message": "No s'ha concedit permís per a aquest host."
+  },
+  "optionsRequestSuccess": {
+    "message": "Lloc de Moodle afegit correctament."
+  },
+  "optionsRemoved": {
+    "message": "Lloc de Moodle eliminat correctament."
+  },
+  "optionsBuiltIn": {
+    "message": "Incl?s"
+  },
+  "optionsAlreadyBuiltIn": {
+    "message": "Aquest lloc de Moodle ja est? incl?s de manera predeterminada."
+  }
+}

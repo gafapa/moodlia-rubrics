@@ -1,0 +1,35 @@
+#rubric-importer-toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+}
+
+.rubric-importer-toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.rubric-importer-toast.show {
+    opacity: 1;
+}
+
+.rubric-importer-toast.error {
+    background-color: #dc3545;
+}
+
+.rubric-importer-toast.success {
+    background-color: #28a745;
+}
+
+.rubric-importer-toast.info {
+    background-color: #17a2b8;
+}

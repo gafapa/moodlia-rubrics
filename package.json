@@ -1,0 +1,17 @@
+{
+  "name": "moodlia-rubrics",
+  "version": "1.0.22",
+  "private": true,
+  "description": "MoodlIA browser extension for importing Moodle rubrics from CSV files.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run validate && npm test",
+    "validate": "node scripts/validate-extension.mjs",
+    "build:site": "node scripts/build-site.mjs",
+    "build:extension": "npm run validate && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-extension.ps1",
+    "build": "npm run validate && npm run build:site && npm run build:extension",
+    "dist": "npm run build",
+    "package": "npm run build"
+  }
+}

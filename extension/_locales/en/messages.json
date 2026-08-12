@@ -1,0 +1,91 @@
+{
+  "extensionName": {
+    "message": "MoodlIA Rubrics for Moodle"
+  },
+  "extensionDescription": {
+    "message": "Imports Moodle rubrics from CSV files."
+  },
+  "dropZoneTitle": {
+    "message": "Import a rubric from CSV"
+  },
+  "dropZoneStrong": {
+    "message": "Click to select"
+  },
+  "dropZoneText": {
+    "message": " or drag and drop a CSV file here"
+  },
+  "startingImport": {
+    "message": "Starting import..."
+  },
+  "importCompleted": {
+    "message": "Import completed successfully!"
+  },
+  "importError": {
+    "message": "Error importing rubric: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "readFileError": {
+    "message": "Error reading file"
+  },
+  "selectFileError": {
+    "message": "Error selecting file"
+  },
+  "invalidFileType": {
+    "message": "Invalid file type. Please drop a CSV file."
+  },
+  "optionsDocumentTitle": {
+    "message": "MoodlIA Rubrics Settings"
+  },
+  "optionsEyebrow": {
+    "message": "Moodle access"
+  },
+  "optionsTitle": {
+    "message": "Allowed Moodle sites"
+  },
+  "optionsIntro": {
+    "message": "Add each Moodle site where MoodlIA Rubrics should run automatically. The extension only activates on hosts you allow here."
+  },
+  "optionsInputLabel": {
+    "message": "Moodle URL"
+  },
+  "optionsInputPlaceholder": {
+    "message": "https://campus.example.edu/moodle"
+  },
+  "optionsAddHost": {
+    "message": "Add site"
+  },
+  "optionsInputHint": {
+    "message": "You can paste the Moodle home URL or a rubric editor URL. MoodlIA Rubrics will detect the base path automatically."
+  },
+  "optionsCurrentHostsTitle": {
+    "message": "Configured sites"
+  },
+  "optionsEmpty": {
+    "message": "No Moodle sites configured yet."
+  },
+  "optionsRemove": {
+    "message": "Remove"
+  },
+  "optionsInvalidUrl": {
+    "message": "Enter a valid Moodle URL."
+  },
+  "optionsPermissionDenied": {
+    "message": "Permission was not granted for that host."
+  },
+  "optionsRequestSuccess": {
+    "message": "Moodle site added successfully."
+  },
+  "optionsRemoved": {
+    "message": "Moodle site removed successfully."
+  },
+  "optionsBuiltIn": {
+    "message": "Included"
+  },
+  "optionsAlreadyBuiltIn": {
+    "message": "This Moodle site is already included by default."
+  }
+}

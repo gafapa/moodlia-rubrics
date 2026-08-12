@@ -1,0 +1,91 @@
+{
+  "extensionName": {
+    "message": "MoodlIA Rubrics Moodlerako"
+  },
+  "extensionDescription": {
+    "message": "Moodleko errubrikak CSV fitxategietatik inportatzen ditu."
+  },
+  "dropZoneTitle": {
+    "message": "Inportatu errubrika bat CSVtik"
+  },
+  "dropZoneStrong": {
+    "message": "Egin klik hautatzeko"
+  },
+  "dropZoneText": {
+    "message": " edo arrastatu eta jaregin CSV fitxategi bat hemen"
+  },
+  "startingImport": {
+    "message": "Inportazioa hasten..."
+  },
+  "importCompleted": {
+    "message": "Inportazioa ondo osatu da."
+  },
+  "importError": {
+    "message": "Errorea errubrika inportatzean: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "readFileError": {
+    "message": "Errorea fitxategia irakurtzean"
+  },
+  "selectFileError": {
+    "message": "Errorea fitxategia hautatzean"
+  },
+  "invalidFileType": {
+    "message": "Fitxategi mota baliogabea. Jaregin CSV fitxategi bat."
+  },
+  "optionsDocumentTitle": {
+    "message": "MoodlIA Rubrics ezarpenak"
+  },
+  "optionsEyebrow": {
+    "message": "Moodle sarbidea"
+  },
+  "optionsTitle": {
+    "message": "Baimendutako Moodle guneak"
+  },
+  "optionsIntro": {
+    "message": "Gehitu MoodlIA Rubrics automatikoki exekutatu behar den Moodle gune bakoitza. Hemen baimentzen dituzun hostetan bakarrik aktibatuko da hedapena."
+  },
+  "optionsInputLabel": {
+    "message": "Moodle URLa"
+  },
+  "optionsInputPlaceholder": {
+    "message": "https://campus.example.edu/moodle"
+  },
+  "optionsAddHost": {
+    "message": "Gehitu gunea"
+  },
+  "optionsInputHint": {
+    "message": "Moodle hasierako URLa edo errubriken editoreko URLa itsats dezakezu. MoodlIA Rubricsk oinarrizko bidea automatikoki detektatuko du."
+  },
+  "optionsCurrentHostsTitle": {
+    "message": "Konfiguratutako guneak"
+  },
+  "optionsEmpty": {
+    "message": "Oraindik ez dago Moodle gunerik konfiguratuta."
+  },
+  "optionsRemove": {
+    "message": "Kendu"
+  },
+  "optionsInvalidUrl": {
+    "message": "Sartu baliozko Moodle URL bat."
+  },
+  "optionsPermissionDenied": {
+    "message": "Ez da baimenik eman host horretarako."
+  },
+  "optionsRequestSuccess": {
+    "message": "Moodle gunea ondo gehitu da."
+  },
+  "optionsRemoved": {
+    "message": "Moodle gunea ondo kendu da."
+  },
+  "optionsBuiltIn": {
+    "message": "Barne"
+  },
+  "optionsAlreadyBuiltIn": {
+    "message": "Moodle gune hau lehenespenez sartuta dago."
+  }
+}

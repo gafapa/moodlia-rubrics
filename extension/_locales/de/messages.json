@@ -1,0 +1,91 @@
+{
+  "extensionName": {
+    "message": "MoodlIA Rubrics für Moodle"
+  },
+  "extensionDescription": {
+    "message": "Importiert Moodle-Bewertungsraster aus CSV-Dateien."
+  },
+  "dropZoneTitle": {
+    "message": "Ein Bewertungsraster aus CSV importieren"
+  },
+  "dropZoneStrong": {
+    "message": "Zum Auswählen klicken"
+  },
+  "dropZoneText": {
+    "message": " oder eine CSV-Datei hierher ziehen"
+  },
+  "startingImport": {
+    "message": "Import wird gestartet..."
+  },
+  "importCompleted": {
+    "message": "Import erfolgreich abgeschlossen."
+  },
+  "importError": {
+    "message": "Fehler beim Importieren des Bewertungsrasters: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1"
+      }
+    }
+  },
+  "readFileError": {
+    "message": "Fehler beim Lesen der Datei"
+  },
+  "selectFileError": {
+    "message": "Fehler beim Auswählen der Datei"
+  },
+  "invalidFileType": {
+    "message": "Ungültiger Dateityp. Bitte eine CSV-Datei ablegen."
+  },
+  "optionsDocumentTitle": {
+    "message": "MoodlIA Rubrics-Einstellungen"
+  },
+  "optionsEyebrow": {
+    "message": "Moodle-Zugriff"
+  },
+  "optionsTitle": {
+    "message": "Erlaubte Moodle-Seiten"
+  },
+  "optionsIntro": {
+    "message": "Füge jede Moodle-Seite hinzu, auf der MoodlIA Rubrics automatisch ausgeführt werden soll. Die Erweiterung aktiviert sich nur auf Hosts, die du hier erlaubst."
+  },
+  "optionsInputLabel": {
+    "message": "Moodle-URL"
+  },
+  "optionsInputPlaceholder": {
+    "message": "https://campus.example.edu/moodle"
+  },
+  "optionsAddHost": {
+    "message": "Seite hinzufügen"
+  },
+  "optionsInputHint": {
+    "message": "Du kannst die Moodle-Startseite oder eine URL des Bewertungsraster-Editors einfügen. MoodlIA Rubrics erkennt den Basispfad automatisch."
+  },
+  "optionsCurrentHostsTitle": {
+    "message": "Konfigurierte Seiten"
+  },
+  "optionsEmpty": {
+    "message": "Es sind noch keine Moodle-Seiten konfiguriert."
+  },
+  "optionsRemove": {
+    "message": "Entfernen"
+  },
+  "optionsInvalidUrl": {
+    "message": "Gib eine gültige Moodle-URL ein."
+  },
+  "optionsPermissionDenied": {
+    "message": "Für diesen Host wurde keine Berechtigung erteilt."
+  },
+  "optionsRequestSuccess": {
+    "message": "Moodle-Seite erfolgreich hinzugefügt."
+  },
+  "optionsRemoved": {
+    "message": "Moodle-Seite erfolgreich entfernt."
+  },
+  "optionsBuiltIn": {
+    "message": "Enthalten"
+  },
+  "optionsAlreadyBuiltIn": {
+    "message": "Diese Moodle-Seite ist bereits standardm??ig enthalten."
+  }
+}

@@ -1,0 +1,34 @@
+.rubric-importer-dropzone {
+    border: 2px dashed #ced4da;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.rubric-importer-dropzone:hover {
+    border-color: #adb5bd;
+    background-color: #e9ecef;
+}
+
+.rubric-importer-dropzone.dragover {
+    border-color: #21a366;
+    background-color: rgba(33, 163, 102, 0.1);
+    color: #21a366;
+}
+
+.rubric-importer-dropzone p {
+    margin: 0;
+    pointer-events: none;
+    /* Prevent events on text */
+}
+
+.rubric-importer-dropzone .icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+}

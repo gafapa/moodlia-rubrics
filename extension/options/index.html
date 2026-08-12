@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MoodlIA Rubrics</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="options-shell">
+      <header class="options-header">
+        <img src="../images/icon-128.png" alt="" width="52" height="52">
+        <div>
+          <p class="options-eyebrow" data-i18n="optionsEyebrow"></p>
+          <h1 data-i18n="optionsTitle"></h1>
+        </div>
+      </header>
+
+      <section class="options-card">
+        <p class="options-intro" data-i18n="optionsIntro"></p>
+        <label class="options-label" for="host-input" data-i18n="optionsInputLabel"></label>
+        <div class="options-form">
+          <input id="host-input" type="text" data-i18n-placeholder="optionsInputPlaceholder" spellcheck="false" autocomplete="off">
+          <button id="add-host" type="button" data-i18n="optionsAddHost"></button>
+        </div>
+        <p class="options-hint" data-i18n="optionsInputHint"></p>
+        <p id="status" class="options-status" aria-live="polite"></p>
+      </section>
+
+      <section class="options-card">
+        <div class="options-list-header">
+          <h2 data-i18n="optionsCurrentHostsTitle"></h2>
+        </div>
+        <ul id="host-list" class="host-list"></ul>
+        <p id="host-empty" class="options-empty" data-i18n="optionsEmpty"></p>
+      </section>
+    </main>
+
+    <script src="../scripts/host-access.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

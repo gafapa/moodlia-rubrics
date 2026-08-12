@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="meta.privacyTitle">Política de Privacidad | Rubricando para Moodle</title>
+    <meta
+      name="description"
+      content="Política de privacidad de Rubricando para Moodle."
+      data-i18n-attr="content:meta.privacyDescription"
+    >
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png">
+    <link rel="apple-touch-icon" href="assets/icon-128.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" data-i18n-attr="aria-label:nav.main">
+      <a class="brand" href="index.html" data-i18n-attr="aria-label:nav.homeLabel">
+        <img src="assets/icon-128.png" alt="" width="36" height="36">
+        <span>Rubricando para Moodle</span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" data-i18n-attr="aria-label:nav.privacyNav">
+          <a href="index.html" data-i18n="nav.home">Inicio</a>
+          <a href="privacy-policy.html" data-i18n="nav.privacy">Privacidad</a>
+        </nav>
+        <label class="language-switcher">
+          <span class="sr-only" data-i18n="language.label">Idioma</span>
+          <select data-language-select data-i18n-attr="aria-label:language.label">
+            <option value="es">ES</option>
+            <option value="gl">GL</option>
+            <option value="en">EN</option>
+            <option value="fr">FR</option>
+            <option value="pt">PT</option>
+            <option value="de">DE</option>
+            <option value="ca">CA</option>
+            <option value="eu">EU</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main class="policy-page">
+      <section class="policy-hero">
+        <h1 data-i18n="privacy.heroTitle">Política de Privacidad</h1>
+        <p data-i18n="privacy.heroText">
+          Esta Política de Privacidad explica cómo Rubricando para Moodle trata los datos cuando los usuarios
+          importan rúbricas de Moodle desde archivos CSV y, cuando existan, utilizan funciones asistidas por IA.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.whoTitle">Quiénes somos</h2>
+        <p data-i18n="privacy.whoText">
+          Rubricando para Moodle es una extensión de Chrome diseñada para ayudar a importar criterios,
+          descripciones de nivel y puntuaciones a páginas de edición de rúbricas de Moodle desde archivos CSV.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.dataTitle">Qué datos trata la extensión</h2>
+        <p data-i18n="privacy.dataIntro">La extensión puede tratar las siguientes categorías de datos:</p>
+        <ul>
+          <li data-i18n="privacy.dataOne">Archivos CSV seleccionados o soltados explícitamente por el usuario.</li>
+          <li data-i18n="privacy.dataTwo">Contenido relacionado con rúbricas ya presente en páginas compatibles de edición de rúbricas de Moodle.</li>
+          <li data-i18n="privacy.dataThree">Acciones del usuario necesarias para realizar la importación, como seleccionar un archivo o iniciarla.</li>
+          <li data-i18n="privacy.dataFour">Datos técnicos de solicitud necesarios para completar llamadas opcionales a APIs remotas de IA, si esas funciones están habilitadas.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.useTitle">Cómo usa la extensión los datos</h2>
+        <ul>
+          <li data-i18n="privacy.useOne">Para interpretar el contenido CSV y extraer criterios, niveles y puntuaciones.</li>
+          <li data-i18n="privacy.useTwo">Para insertar la interfaz de importación en páginas compatibles de edición de rúbricas de Moodle.</li>
+          <li data-i18n="privacy.useThree">Para completar el formulario de la rúbrica de Moodle con los datos proporcionados por el usuario.</li>
+          <li data-i18n="privacy.useFour">Para dar soporte a funciones opcionales asistidas por IA, si existen y el usuario las utiliza.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section policy-note">
+        <h2 data-i18n="privacy.aiTitle">Procesamiento con IA</h2>
+        <p data-i18n="privacy.aiText">
+          La extensión puede incluir funciones asistidas por IA en algunas versiones. Cuando esas funciones estén disponibles,
+          los datos podrán procesarse de una de estas dos formas, según la función y la configuración:
+        </p>
+        <ul>
+          <li data-i18n="privacy.aiOne">Localmente en el dispositivo del usuario mediante un modelo en local.</li>
+          <li data-i18n="privacy.aiTwo">De forma remota a través de un proveedor externo de API de IA utilizado para completar la función solicitada.</li>
+        </ul>
+        <p data-i18n="privacy.aiProviderText">
+          Cuando se utilice procesamiento remoto con IA, solo debería transmitirse el contenido razonablemente necesario
+          para ejecutar la función solicitada por el usuario. Esto puede incluir fragmentos del archivo CSV seleccionado,
+          texto de la rúbrica en la página de Moodle y prompts o instrucciones del usuario. Si se usa un proveedor remoto,
+          ese proveedor podrá tratar los datos enviados conforme a sus propios términos y política de privacidad.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.shareTitle">Compartición de datos</h2>
+        <p data-i18n="privacy.shareText">
+          No vendemos datos de usuario. No compartimos datos de usuario con terceros salvo en estos casos:
+        </p>
+        <ul>
+          <li data-i18n="privacy.shareOne">Cuando el usuario utiliza explícitamente una función asistida por IA que depende de un proveedor remoto de API.</li>
+          <li data-i18n="privacy.shareTwo">Cuando la divulgación es exigida por ley, regulación o proceso legal.</li>
+          <li data-i18n="privacy.shareThree">Cuando compartir la información es técnicamente necesario para prestar la función solicitada a través de la infraestructura de red.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.remoteTitle">Código remoto</h2>
+        <p data-i18n="privacy.remoteText">
+          La extensión no descarga ni ejecuta código remoto JavaScript o WebAssembly como parte de su funcionamiento principal.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.retentionTitle">Conservación de datos</h2>
+        <p data-i18n="privacy.retentionText">
+          La extensión está diseñada para procesar las importaciones localmente en el navegador siempre que sea posible.
+          No operamos una base de datos backend para almacenar archivos de rúbricas importados ni contenido de páginas Moodle.
+          Si se utiliza una API remota opcional de IA, los datos transmitidos podrán ser conservados por el proveedor correspondiente
+          según su propia política.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.securityTitle">Seguridad</h2>
+        <p data-i18n="privacy.securityText">
+          Procuramos minimizar el acceso a datos a lo estrictamente necesario para la finalidad única de la extensión.
+          Cuando existan solicitudes a APIs remotas, deberían transmitirse por canales seguros como HTTPS.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.choiceTitle">Opciones del usuario</h2>
+        <ul>
+          <li data-i18n="privacy.choiceOne">Los usuarios eligen qué archivo CSV importar.</li>
+          <li data-i18n="privacy.choiceTwo">Los usuarios pueden dejar de usar la extensión en cualquier momento desinstalándola.</li>
+          <li data-i18n="privacy.choiceThree">Los usuarios pueden evitar el procesamiento remoto con IA no utilizando funciones asistidas por IA que dependan de APIs externas.</li>
+        </ul>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.changesTitle">Cambios en esta política</h2>
+        <p data-i18n="privacy.changesText">
+          Esta Política de Privacidad puede actualizarse cuando cambie la extensión, incluyendo el caso de que se introduzcan
+          nuevas funciones asistidas por IA o nuevas integraciones. La última versión publicada de esta página es la que resulta aplicable.
+        </p>
+      </section>
+
+      <section class="policy-section">
+        <h2 data-i18n="privacy.contactTitle">Contacto</h2>
+        <p data-i18n="privacy.contactText">
+          Para consultas de privacidad o soporte, utiliza el contacto o la URL de soporte indicada en la ficha de Chrome Web Store
+          de Rubricando para Moodle.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="index.html" data-i18n="footer.backHome">Volver a la portada</a>
+    </footer>
+  </body>
+</html>
