@@ -1,25 +1,30 @@
 #rubric-importer-toast-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    inset-block-end: 20px;
+    inset-inline-end: 20px;
     z-index: 10000;
+    width: min(420px, calc(100vw - 40px));
 }
 
 .rubric-importer-toast {
     background-color: #333;
     color: #fff;
-    padding: 12px 24px;
-    border-radius: 4px;
-    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-block-start: 10px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: translateY(8px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
 }
 
 .rubric-importer-toast.show {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .rubric-importer-toast.error {
@@ -31,5 +36,12 @@
 }
 
 .rubric-importer-toast.info {
-    background-color: #17a2b8;
+    background-color: #0f6cbf;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rubric-importer-toast {
+        transform: none;
+        transition: none;
+    }
 }

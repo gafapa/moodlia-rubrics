@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Tipo de arquivo inválido. Solte um arquivo CSV."
   },
+  "workshopInvalidCriterion": {
+    "message": "O critério $CRITERION$ não é válido para Workshop. As pontuações devem ser números inteiros únicos entre 0 e 100.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "Este Workshop já contém uma rubrica. Deseja substituí-la pelo conteúdo do CSV?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "Esta rubrica precisa de mais níveis do que o Moodle mostra agora. O MoodlIA salvará temporariamente o formulário para criar os espaços necessários e continuará a importação. Continuar?"
+  },
+  "workshopExpansionFailed": {
+    "message": "O Moodle não conseguiu criar os espaços adicionais. Revise os erros do formulário e tente novamente."
+  },
+  "workshopImportCompleted": {
+    "message": "Rubrica importada. Revise-a e escolha uma opção para salvar."
+  },
   "optionsDocumentTitle": {
     "message": "Configurações do MoodlIA Rubrics"
   },

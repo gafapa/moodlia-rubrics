@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Type de fichier invalide. Déposez un fichier CSV."
   },
+  "workshopInvalidCriterion": {
+    "message": "Le critère $CRITERION$ n'est pas valide pour l'Atelier. Les notes doivent être des nombres entiers uniques compris entre 0 et 100.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "Cet Atelier contient déjà une grille d'évaluation. La remplacer par le contenu du CSV ?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "Cette grille nécessite plus de niveaux que Moodle n'en affiche actuellement. MoodlIA enregistrera temporairement le formulaire pour créer les espaces nécessaires, puis poursuivra l'importation. Continuer ?"
+  },
+  "workshopExpansionFailed": {
+    "message": "Moodle n'a pas pu créer les espaces supplémentaires. Vérifiez les erreurs du formulaire et réessayez."
+  },
+  "workshopImportCompleted": {
+    "message": "Grille importée. Vérifiez-la et choisissez une option d'enregistrement."
+  },
   "optionsDocumentTitle": {
     "message": "Paramètres de MoodlIA Rubrics"
   },

@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Tipus de fitxer no vàlid. Deixa anar un fitxer CSV."
   },
+  "workshopInvalidCriterion": {
+    "message": "El criteri $CRITERION$ no és vàlid per al Taller. Les puntuacions han de ser nombres enters únics entre 0 i 100.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "Aquest Taller ja conté una rúbrica. La vols substituir pel contingut del CSV?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "Aquesta rúbrica necessita més nivells dels que Moodle mostra ara. MoodlIA desarà temporalment el formulari per crear els espais necessaris i continuarà la importació. Vols continuar?"
+  },
+  "workshopExpansionFailed": {
+    "message": "Moodle no ha pogut crear els espais addicionals. Revisa els errors del formulari i torna-ho a provar."
+  },
+  "workshopImportCompleted": {
+    "message": "Rúbrica importada. Revisa-la i tria una opció de desament."
+  },
   "optionsDocumentTitle": {
     "message": "Configuració de MoodlIA Rubrics"
   },

@@ -193,6 +193,7 @@ function validateLocaleMessages(locale, messages, defaultKeys) {
 function validateJavaScriptSyntax() {
   const scriptPaths = [
     join(extensionDir, 'scripts', 'workbook.js'),
+    join(extensionDir, 'scripts', 'rubric-model.js'),
     join(extensionDir, 'scripts', 'content.js'),
     join(extensionDir, 'scripts', 'host-access.js'),
     join(extensionDir, 'scripts', 'i18n.js'),

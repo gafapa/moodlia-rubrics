@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Invalid file type. Please drop a CSV file."
   },
+  "workshopInvalidCriterion": {
+    "message": "Criterion $CRITERION$ is not valid for Workshop. Grades must be unique integers between 0 and 100.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "This Workshop already contains a rubric. Replace it with the CSV contents?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "This rubric needs more levels than Moodle currently shows. MoodlIA will temporarily save the form to create the required spaces and continue the import. Continue?"
+  },
+  "workshopExpansionFailed": {
+    "message": "Moodle could not create the additional spaces. Review the form errors and try again."
+  },
+  "workshopImportCompleted": {
+    "message": "Rubric imported. Review it and choose a save option."
+  },
   "optionsDocumentTitle": {
     "message": "MoodlIA Rubrics Settings"
   },

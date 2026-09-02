@@ -1,12 +1,13 @@
 # MoodlIA Rubrics
 
-MoodlIA Rubrics is a browser extension for importing Moodle rubrics from CSV files.
+MoodlIA Rubrics is a browser extension for importing Moodle rubrics from CSV files into assignments and Workshops.
 
 ## Project Structure
 
 - `extension/`: Manifest V3 extension source loaded by the browser.
 - `extension/scripts/content.js`: Moodle rubric importer content script.
 - `extension/scripts/workbook.js`: Native CSV parser with no third-party runtime dependency.
+- `extension/scripts/rubric-model.js`: Shared CSV-to-rubric mapping and Workshop validation.
 - `extension/styles/`: Content script styles.
 - `web/`: Static landing page source.
 - `scripts/`: Local project validation and packaging scripts.
@@ -25,10 +26,16 @@ Load the extension in Chrome or another Chromium-based browser:
 2. Enable Developer mode.
 3. Click "Load unpacked".
 4. Select the `extension` folder.
-5. Open a Moodle rubric editing page on a built-in HTTPS host, or open the extension options page to add another Moodle host.
+5. Open an assignment rubric editor or a Workshop assessment form configured with the Rubric grading strategy on a built-in HTTPS host. Alternatively, open the extension options page to add another Moodle host.
 6. Grant the requested host permission if you add a custom Moodle site.
 
 The extension does not inject itself into every website. It runs by default on the supported Xunta Moodle hosts over HTTPS and registers additional content scripts only for HTTPS Moodle hosts explicitly added by the user from the options page.
+
+## CSV Format
+
+Each criterion uses two rows. Column A contains the criterion description. Columns B onward contain level definitions, and the cells directly below them contain the corresponding grades.
+
+Workshop grades must be unique integers between 0 and 100 within each criterion. Moodle initially exposes a limited number of Workshop level fields. If an import needs more levels, MoodlIA asks for confirmation before using Moodle's "Save and continue editing" action to create the additional fields, then resumes the import automatically. The final imported form remains open for review.
 
 Built-in Moodle hosts:
 
@@ -64,4 +71,4 @@ The extension does not ship with third-party runtime libraries. Spreadsheet impo
 npm run check
 ```
 
-The suite validates the extension package, CSV parsing, Moodle host normalization, optional permissions, and stored-site deduplication.
+The suite validates the extension package, CSV parsing, rubric mapping, Workshop grade constraints, Moodle host normalization, optional permissions, and stored-site deduplication.

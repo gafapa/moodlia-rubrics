@@ -3,7 +3,10 @@ const RubricandoHostAccess = {
 	storageArea: 'local',
 	legacyStorageArea: 'sync',
 	contentScriptPrefix: 'rubricando-site-',
-	rubricPathSuffix: '/grade/grading/form/rubric/edit.php*',
+	rubricPathSuffixes: [
+		'/grade/grading/form/rubric/edit.php*',
+		'/mod/workshop/editform.php*'
+	],
 	builtInHosts: [
 		'www.edu.xunta.gal',
 		'edu.xunta.gal',
@@ -37,8 +40,11 @@ const RubricandoHostAccess = {
 	},
 
 	extractBasePath(pathname) {
-		const rubricPath = '/grade/grading/form/rubric/edit.php';
-		const rubricIndex = pathname.indexOf(rubricPath);
+		const rubricPaths = this.rubricPathSuffixes.map(pathSuffix => pathSuffix.replace(/\*$/, ''));
+		const rubricIndexes = rubricPaths
+			.map(rubricPath => pathname.indexOf(rubricPath))
+			.filter(index => index >= 0);
+		const rubricIndex = rubricIndexes.length > 0 ? Math.min(...rubricIndexes) : -1;
 		const rawBasePath = rubricIndex >= 0 ? pathname.slice(0, rubricIndex) : pathname;
 		const normalizedBasePath = rawBasePath.replace(/\/+$/, '');
 
@@ -65,7 +71,7 @@ const RubricandoHostAccess = {
 		}
 
 		const origin = site.originPattern.replace(/\/\*$/, '');
-		return [`${origin}${site.basePath}${this.rubricPathSuffix}`];
+		return this.rubricPathSuffixes.map(pathSuffix => `${origin}${site.basePath}${pathSuffix}`);
 	},
 
 	getBuiltInSites() {
@@ -77,10 +83,10 @@ const RubricandoHostAccess = {
 				basePath: '',
 				label: origin,
 				builtIn: true,
-				matches: [
-					`${origin}${this.rubricPathSuffix}`,
-					`${origin}/*${this.rubricPathSuffix}`
-				]
+				matches: this.rubricPathSuffixes.flatMap(pathSuffix => [
+					`${origin}${pathSuffix}`,
+					`${origin}/*${pathSuffix}`
+				])
 			};
 		});
 	},
@@ -171,7 +177,7 @@ const RubricandoHostAccess = {
 			id: this.buildContentScriptId(site),
 			matches: this.buildMatches(site),
 			css: ['styles/main.css', 'styles/toast.css', 'styles/dropzone.css'],
-			js: ['scripts/workbook.js', 'scripts/i18n.js', 'scripts/content.js'],
+			js: ['scripts/workbook.js', 'scripts/rubric-model.js', 'scripts/i18n.js', 'scripts/content.js'],
 			runAt: 'document_idle',
 			persistAcrossSessions: true
 		})));

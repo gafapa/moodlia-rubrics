@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "default_locale": "es",
   "name": "__MSG_extensionName__",
-  "version": "1.0.22",
+  "version": "1.1.0",
   "description": "__MSG_extensionDescription__",
   "permissions": [
     "storage",
@@ -23,14 +23,24 @@
       "matches": [
         "https://www.edu.xunta.gal/grade/grading/form/rubric/edit.php*",
         "https://www.edu.xunta.gal/*/grade/grading/form/rubric/edit.php*",
+        "https://www.edu.xunta.gal/mod/workshop/editform.php*",
+        "https://www.edu.xunta.gal/*/mod/workshop/editform.php*",
         "https://edu.xunta.gal/grade/grading/form/rubric/edit.php*",
         "https://edu.xunta.gal/*/grade/grading/form/rubric/edit.php*",
+        "https://edu.xunta.gal/mod/workshop/editform.php*",
+        "https://edu.xunta.gal/*/mod/workshop/editform.php*",
         "https://centros.edu.xunta.gal/grade/grading/form/rubric/edit.php*",
         "https://centros.edu.xunta.gal/*/grade/grading/form/rubric/edit.php*",
+        "https://centros.edu.xunta.gal/mod/workshop/editform.php*",
+        "https://centros.edu.xunta.gal/*/mod/workshop/editform.php*",
         "https://platega.edu.xunta.gal/grade/grading/form/rubric/edit.php*",
         "https://platega.edu.xunta.gal/*/grade/grading/form/rubric/edit.php*",
+        "https://platega.edu.xunta.gal/mod/workshop/editform.php*",
+        "https://platega.edu.xunta.gal/*/mod/workshop/editform.php*",
         "https://eva.edu.xunta.gal/grade/grading/form/rubric/edit.php*",
-        "https://eva.edu.xunta.gal/*/grade/grading/form/rubric/edit.php*"
+        "https://eva.edu.xunta.gal/*/grade/grading/form/rubric/edit.php*",
+        "https://eva.edu.xunta.gal/mod/workshop/editform.php*",
+        "https://eva.edu.xunta.gal/*/mod/workshop/editform.php*"
       ],
       "css": [
         "styles/main.css",
@@ -39,6 +49,7 @@
       ],
       "js": [
         "scripts/workbook.js",
+        "scripts/rubric-model.js",
         "scripts/i18n.js",
         "scripts/content.js"
       ],

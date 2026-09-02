@@ -1,13 +1,17 @@
 .rubric-importer-dropzone {
+    display: block;
+    width: 100%;
     border: 2px dashed #ced4da;
-    border-radius: 6px;
+    border-radius: 12px;
     padding: 20px;
     text-align: center;
     color: #6c757d;
     cursor: pointer;
     background-color: #f8f9fa;
-    transition: all 0.2s ease-in-out;
-    margin-bottom: 20px;
+    font: inherit;
+    line-height: 1.5;
+    transition: border-color 0.2s ease-out, background-color 0.2s ease-out, color 0.2s ease-out, box-shadow 0.2s ease-out;
+    margin-block-end: 20px;
 }
 
 .rubric-importer-dropzone:hover {
@@ -21,14 +25,32 @@
     color: #21a366;
 }
 
-.rubric-importer-dropzone p {
+.rubric-importer-dropzone:focus-visible {
+    outline: 3px solid #0f6cbf;
+    outline-offset: 3px;
+}
+
+.rubric-importer-dropzone:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.rubric-importer-dropzone-copy {
+    display: block;
     margin: 0;
+    overflow-wrap: anywhere;
     pointer-events: none;
-    /* Prevent events on text */
 }
 
 .rubric-importer-dropzone .icon {
     font-size: 24px;
-    margin-bottom: 8px;
+    line-height: 1.25;
+    margin-block-end: 8px;
     display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rubric-importer-dropzone {
+        transition: none;
+    }
 }

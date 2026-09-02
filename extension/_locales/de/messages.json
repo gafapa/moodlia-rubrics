@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Ungültiger Dateityp. Bitte eine CSV-Datei ablegen."
   },
+  "workshopInvalidCriterion": {
+    "message": "Kriterium $CRITERION$ ist für Workshop ungültig. Bewertungen müssen eindeutige ganze Zahlen zwischen 0 und 100 sein.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "Dieser Workshop enthält bereits ein Bewertungsraster. Durch den CSV-Inhalt ersetzen?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "Dieses Bewertungsraster benötigt mehr Stufen, als Moodle derzeit anzeigt. MoodlIA speichert das Formular vorübergehend, erstellt die nötigen Felder und setzt den Import fort. Fortfahren?"
+  },
+  "workshopExpansionFailed": {
+    "message": "Moodle konnte die zusätzlichen Felder nicht erstellen. Prüfen Sie die Formularfehler und versuchen Sie es erneut."
+  },
+  "workshopImportCompleted": {
+    "message": "Bewertungsraster importiert. Prüfen Sie es und wählen Sie eine Speicheroption."
+  },
   "optionsDocumentTitle": {
     "message": "MoodlIA Rubrics-Einstellungen"
   },

@@ -37,6 +37,22 @@
   "invalidFileType": {
     "message": "Fitxategi mota baliogabea. Jaregin CSV fitxategi bat."
   },
+  "workshopInvalidCriterion": {
+    "message": "$CRITERION$ irizpidea ez da baliozkoa Tailerrerako. Puntuazioek 0 eta 100 arteko zenbaki oso bakarrak izan behar dute.",
+    "placeholders": { "criterion": { "content": "$1" } }
+  },
+  "workshopReplaceConfirmation": {
+    "message": "Tailer honek dagoeneko errubrika bat du. CSV fitxategiaren edukiarekin ordeztu nahi duzu?"
+  },
+  "workshopAutoSaveConfirmation": {
+    "message": "Errubrika honek Moodlek orain erakusten dituenak baino maila gehiago behar ditu. MoodlIAk formularioa aldi baterako gordeko du beharrezko espazioak sortzeko, eta inportazioarekin jarraituko du. Jarraitu?"
+  },
+  "workshopExpansionFailed": {
+    "message": "Moodlek ezin izan ditu espazio gehigarriak sortu. Berrikusi formularioko erroreak eta saiatu berriro."
+  },
+  "workshopImportCompleted": {
+    "message": "Errubrika inportatu da. Berrikusi eta aukeratu gordetzeko aukera bat."
+  },
   "optionsDocumentTitle": {
     "message": "MoodlIA Rubrics ezarpenak"
   },
