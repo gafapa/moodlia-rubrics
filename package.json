@@ -13,5 +13,6 @@
     "build": "npm run validate && npm run build:site && npm run build:extension",
     "dist": "npm run build",
     "package": "npm run build"
-  }
+  },
+  "license": "GPL-3.0-or-later"
 }
