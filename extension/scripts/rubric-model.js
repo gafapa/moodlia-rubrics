@@ -1,7 +1,7 @@
 class RubricImportModel {
 	static fromSheet(sheet) {
 		if (!sheet || typeof sheet !== 'object') {
-			throw new Error('The CSV file does not contain a readable rubric.');
+			throw new Error('The file does not contain a readable rubric.');
 		}
 
 		const criteria = [];
@@ -45,7 +45,7 @@ class RubricImportModel {
 		}
 
 		if (criteria.length === 0) {
-			throw new Error('The CSV file does not contain any rubric criteria.');
+			throw new Error('The file does not contain any rubric criteria.');
 		}
 
 		return { criteria };

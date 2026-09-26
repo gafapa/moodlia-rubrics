@@ -2,11 +2,76 @@ class RubricWorkbookParser {
 	static async parse(fileName, buffer) {
 		const normalizedFileName = fileName.toLowerCase();
 
-		if (!normalizedFileName.endsWith('.csv')) {
-			throw new Error('Unsupported file format. Use .csv.');
+		if (normalizedFileName.endsWith('.csv')) return this.parseCsv(buffer);
+		if (normalizedFileName.endsWith('.xlsx')) return this.parseXlsx(buffer);
+		throw new Error('Unsupported file format. Use .csv or .xlsx.');
+	}
+
+	static parseXlsx(buffer) {
+		let files;
+		try {
+			files = fflate.unzipSync(new Uint8Array(buffer), {
+				filter: file => file.name === 'xl/workbook.xml' || file.name === 'xl/_rels/workbook.xml.rels' ||
+					file.name === 'xl/sharedStrings.xml' || /^xl\/worksheets\/[^/]+\.xml$/.test(file.name)
+			});
+		} catch {
+			throw new Error('The Excel file is not a readable .xlsx workbook.');
 		}
 
-		return this.parseCsv(buffer);
+		const workbook = this.readXml(files, 'xl/workbook.xml');
+		const firstSheet = workbook.getElementsByTagNameNS('*', 'sheet')[0];
+		if (!firstSheet) throw new Error('The Excel workbook does not contain a worksheet.');
+		const relationshipId = firstSheet.getAttribute('r:id') || firstSheet.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships', 'id');
+		const relationships = this.readXml(files, 'xl/_rels/workbook.xml.rels');
+		const relationship = Array.from(relationships.getElementsByTagNameNS('*', 'Relationship'))
+			.find(item => item.getAttribute('Id') === relationshipId);
+		if (!relationship || !relationship.getAttribute('Type')?.endsWith('/worksheet')) {
+			throw new Error('The first Excel worksheet cannot be found.');
+		}
+
+		const target = relationship.getAttribute('Target');
+		const sheetPath = target.startsWith('/') ? target.slice(1) : `xl/${target}`;
+		const normalizedPath = sheetPath.split('/').reduce((parts, part) => {
+			if (part === '..') parts.pop();
+			else if (part !== '.') parts.push(part);
+			return parts;
+		}, []).join('/');
+		if (!normalizedPath.startsWith('xl/worksheets/')) throw new Error('The first Excel worksheet has an invalid path.');
+
+		const sharedStrings = files['xl/sharedStrings.xml']
+			? Array.from(this.readXml(files, 'xl/sharedStrings.xml').getElementsByTagNameNS('*', 'si'), item => this.readText(item))
+			: [];
+		const worksheet = this.readXml(files, normalizedPath);
+		const sheet = {};
+		for (const cell of worksheet.getElementsByTagNameNS('*', 'c')) {
+			const address = cell.getAttribute('r');
+			if (!/^[A-Z]+[1-9]\d*$/.test(address || '')) continue;
+			const type = cell.getAttribute('t');
+			const rawValue = cell.getElementsByTagNameNS('*', 'v')[0]?.textContent;
+			let value;
+			if (type === 'inlineStr') value = this.readText(cell.getElementsByTagNameNS('*', 'is')[0]);
+			else if (type === 's') value = sharedStrings[Number(rawValue)];
+			else if (type === 'str') value = rawValue;
+			else if (type === 'e') throw new Error(`The Excel worksheet contains an error in ${address}.`);
+			else if (rawValue !== undefined && rawValue !== '') value = type === 'b' ? rawValue : Number(rawValue);
+			if (value !== undefined && value !== '' && (typeof value !== 'number' || Number.isFinite(value))) {
+				sheet[address] = { v: value };
+			}
+		}
+		return sheet;
+	}
+
+	static readXml(files, path) {
+		if (!files[path]) throw new Error(`The Excel workbook is missing ${path}.`);
+		const xml = new TextDecoder('utf-8', { fatal: true }).decode(files[path]);
+		const document = new DOMParser().parseFromString(xml, 'application/xml');
+		if (document.getElementsByTagName('parsererror').length) throw new Error(`The Excel workbook contains invalid XML in ${path}.`);
+		return document;
+	}
+
+	static readText(element) {
+		if (!element) return '';
+		return Array.from(element.getElementsByTagNameNS('*', 't'), item => item.textContent).join('');
 	}
 
 	static parseCsv(buffer) {

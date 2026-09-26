@@ -176,14 +176,21 @@ class RubricImporter {
 
 	async newStandardLevel(criterionIndex) {
 		const row = this.getStandardCriterionRows()[criterionIndex];
-		const addLevelButton = row?.querySelector('.addlevel input, .addlevel button, .addlevel');
+		const addLevelButton = row?.querySelector('.addlevel input[type="submit"], .addlevel button');
 
 		if (!addLevelButton) {
 			throw new Error(`The level button for criterion ${criterionIndex + 1} was not found.`);
 		}
 
+		const previousLevelCount = row.querySelectorAll('table tbody tr td.level').length;
 		addLevelButton.click();
-		await new Promise(resolve => setTimeout(resolve, 100));
+		const start = Date.now();
+		while (row.querySelectorAll('table tbody tr td.level').length <= previousLevelCount) {
+			if (Date.now() - start >= 2000) {
+				throw new Error(`Moodle did not add level ${previousLevelCount + 1} to criterion ${criterionIndex + 1}.`);
+			}
+			await new Promise(resolve => requestAnimationFrame(resolve));
+		}
 	}
 
 	async modifyStandardLevel(criterionIndex, levelIndex, description, grade) {
@@ -225,7 +232,7 @@ class RubricImporter {
 			let currentLevels = row.querySelectorAll('table tbody tr td.level');
 			while (currentLevels.length > criterion.levels.length) {
 				const lastLevel = currentLevels[currentLevels.length - 1];
-				const deleteButton = lastLevel.querySelector('.delete input, .delete button, .delete');
+				const deleteButton = lastLevel.querySelector('.delete input[type="submit"], .delete button');
 				if (!deleteButton) break;
 				deleteButton.click();
 				await new Promise(resolve => setTimeout(resolve, 50));
@@ -540,7 +547,7 @@ class RubricImporter {
 		event.preventDefault();
 
 		try {
-			const file = await this.selectFile('.csv');
+			const file = await this.selectFile('.csv,.xlsx');
 			if (file) await this.readFile(file);
 		} catch (error) {
 			console.error('Failed to select rubric file', error);
@@ -556,7 +563,7 @@ class RubricImporter {
 		const file = event.dataTransfer.files[0];
 		if (!file) return;
 
-		if (file.name.toLowerCase().endsWith('.csv')) {
+		if (/\.(csv|xlsx)$/i.test(file.name)) {
 			this.readFile(file);
 		} else {
 			this.showToast(this.t('invalidFileType'), 'error');

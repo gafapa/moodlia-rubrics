@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics Moodlerako"
   },
   "extensionDescription": {
-    "message": "Moodleko errubrikak CSV fitxategietatik inportatzen ditu."
+    "message": "Moodleko errubrikak CSV eta Excel fitxategietatik inportatzen ditu."
   },
   "dropZoneTitle": {
-    "message": "Inportatu errubrika bat CSVtik"
+    "message": "Inportatu errubrika bat CSV edo Excel fitxategitik"
   },
   "dropZoneStrong": {
     "message": "Egin klik hautatzeko"
   },
   "dropZoneText": {
-    "message": " edo arrastatu eta jaregin CSV fitxategi bat hemen"
+    "message": " edo arrastatu eta jaregin CSV edo Excel fitxategi bat hemen"
   },
   "startingImport": {
     "message": "Inportazioa hasten..."
@@ -35,7 +35,7 @@
     "message": "Errorea fitxategia hautatzean"
   },
   "invalidFileType": {
-    "message": "Fitxategi mota baliogabea. Jaregin CSV fitxategi bat."
+    "message": "Fitxategi mota baliogabea. Jaregin CSV edo Excel .xlsx fitxategi bat."
   },
   "workshopInvalidCriterion": {
     "message": "$CRITERION$ irizpidea ez da baliozkoa Tailerrerako. Puntuazioek 0 eta 100 arteko zenbaki oso bakarrak izan behar dute.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "Tailer honek dagoeneko errubrika bat du. CSV fitxategiaren edukiarekin ordeztu nahi duzu?"
+    "message": "Tailer honek dagoeneko errubrika bat du. Hautatutako fitxategiaren edukiarekin ordeztu nahi duzu?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "Errubrika honek Moodlek orain erakusten dituenak baino maila gehiago behar ditu. MoodlIAk formularioa aldi baterako gordeko du beharrezko espazioak sortzeko, eta inportazioarekin jarraituko du. Jarraitu?"

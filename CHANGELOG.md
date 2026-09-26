@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Import assignment and Workshop rubrics from Excel `.xlsx` workbooks, using the
+  first worksheet and the same two-row-per-criterion layout as CSV files.
+- Keep CSV support and update the file picker, translations, website, and
+  documentation for both formats.
+- Click Moodle's actual add-level button during assignment rubric import and
+  wait for each new level before filling it.
+
 ## 1.2.0 - 2026-09-26
 
 Activation changes. People who update from an earlier version see a one-time

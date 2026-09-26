@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics per a Moodle"
   },
   "extensionDescription": {
-    "message": "Importa rúbriques de Moodle des de fitxers CSV."
+    "message": "Importa rúbriques de Moodle des de fitxers CSV i Excel."
   },
   "dropZoneTitle": {
-    "message": "Importa una rúbrica des de CSV"
+    "message": "Importa una rúbrica des de CSV o Excel"
   },
   "dropZoneStrong": {
     "message": "Fes clic per seleccionar"
   },
   "dropZoneText": {
-    "message": " o arrossega i deixa anar aquí un fitxer CSV"
+    "message": " o arrossega i deixa anar aquí un fitxer CSV o Excel"
   },
   "startingImport": {
     "message": "Iniciant la importació..."
@@ -35,7 +35,7 @@
     "message": "Error en seleccionar el fitxer"
   },
   "invalidFileType": {
-    "message": "Tipus de fitxer no vàlid. Deixa anar un fitxer CSV."
+    "message": "Tipus de fitxer no vàlid. Deixa anar un fitxer CSV o Excel .xlsx."
   },
   "workshopInvalidCriterion": {
     "message": "El criteri $CRITERION$ no és vàlid per al Taller. Les puntuacions han de ser nombres enters únics entre 0 i 100.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "Aquest Taller ja conté una rúbrica. La vols substituir pel contingut del CSV?"
+    "message": "Aquest Taller ja conté una rúbrica. La vols substituir pel contingut del fitxer seleccionat?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "Aquesta rúbrica necessita més nivells dels que Moodle mostra ara. MoodlIA desarà temporalment el formulari per crear els espais necessaris i continuarà la importació. Vols continuar?"
