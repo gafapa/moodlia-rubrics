@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics pour Moodle"
   },
   "extensionDescription": {
-    "message": "Importe des grilles d'évaluation Moodle depuis des fichiers CSV."
+    "message": "Importe des grilles d'évaluation Moodle depuis des fichiers CSV et Excel."
   },
   "dropZoneTitle": {
-    "message": "Importer une grille depuis un CSV"
+    "message": "Importer une grille depuis un CSV ou Excel"
   },
   "dropZoneStrong": {
     "message": "Cliquez pour sélectionner"
   },
   "dropZoneText": {
-    "message": " ou glissez-déposez ici un fichier CSV"
+    "message": " ou glissez-déposez ici un fichier CSV ou Excel"
   },
   "startingImport": {
     "message": "Démarrage de l'importation..."
@@ -35,7 +35,7 @@
     "message": "Erreur lors de la sélection du fichier"
   },
   "invalidFileType": {
-    "message": "Type de fichier invalide. Déposez un fichier CSV."
+    "message": "Type de fichier invalide. Déposez un fichier CSV ou Excel .xlsx."
   },
   "workshopInvalidCriterion": {
     "message": "Le critère $CRITERION$ n'est pas valide pour l'Atelier. Les notes doivent être des nombres entiers uniques compris entre 0 et 100.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "Cet Atelier contient déjà une grille d'évaluation. La remplacer par le contenu du CSV ?"
+    "message": "Cet Atelier contient déjà une grille d'évaluation. La remplacer par le contenu du fichier sélectionné ?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "Cette grille nécessite plus de niveaux que Moodle n'en affiche actuellement. MoodlIA enregistrera temporairement le formulaire pour créer les espaces nécessaires, puis poursuivra l'importation. Continuer ?"

@@ -1,13 +1,13 @@
 # MoodlIA Rubrics
 
-MoodlIA Rubrics is a browser extension for importing Moodle rubrics from CSV files into assignments and Workshops.
+MoodlIA Rubrics is a browser extension for importing Moodle rubrics from CSV and Excel `.xlsx` files into assignments and Workshops.
 
 ## Project Structure
 
 - `extension/`: Manifest V3 extension source loaded by the browser.
 - `extension/scripts/content.js`: Moodle rubric importer content script.
-- `extension/scripts/workbook.js`: Native CSV parser with no third-party runtime dependency.
-- `extension/scripts/rubric-model.js`: Shared CSV-to-rubric mapping and Workshop validation.
+- `extension/scripts/workbook.js`: CSV and Excel workbook parser.
+- `extension/scripts/rubric-model.js`: Shared spreadsheet-to-rubric mapping and Workshop validation.
 - `extension/styles/`: Content script styles.
 - `web/`: Static landing page source.
 - `scripts/`: Local project validation and packaging scripts.
@@ -53,9 +53,11 @@ Until version 1.1.0 the importer ran automatically on the Xunta Moodle hosts
 a one-time page explaining the new activation; sites they had added in the
 options keep working.
 
-## CSV Format
+## CSV and Excel Format
 
 Each criterion uses two rows. Column A contains the criterion description. Columns B onward contain level definitions, and the cells directly below them contain the corresponding grades.
+
+Use a `.csv` file or save the same layout as an Excel `.xlsx` workbook. For Excel, the importer reads the first worksheet. Legacy `.xls` workbooks are not supported. Text, numeric grades, and formulas with saved results are read; recalculate and save a workbook before importing if its grades use formulas.
 
 Workshop grades must be unique integers between 0 and 100 within each criterion. Moodle initially exposes a limited number of Workshop level fields. If an import needs more levels, MoodlIA asks for confirmation before using Moodle's "Save and continue editing" action to create the additional fields, then resumes the import automatically. The final imported form remains open for review.
 
@@ -77,7 +79,7 @@ The generated website and ZIP file are written to `dist/`.
 
 ## Runtime Footprint
 
-The extension does not ship with third-party runtime libraries. Spreadsheet import is handled by browser-native code for `.csv` files to keep the unpacked extension as small as possible.
+The extension includes a small, locally bundled ZIP decoder (`fflate`, MIT license) for `.xlsx` files. CSV parsing and Excel XML parsing use browser-native APIs. Files are processed in the browser.
 
 ## Quality Checks
 
@@ -85,7 +87,7 @@ The extension does not ship with third-party runtime libraries. Spreadsheet impo
 npm run check
 ```
 
-The suite validates the extension package, CSV parsing, rubric mapping, Workshop grade constraints, Moodle host normalization, optional permissions, and stored-site deduplication.
+The suite validates the extension package, CSV and Excel parsing, rubric mapping, Workshop grade constraints, Moodle host normalization, optional permissions, and stored-site deduplication.
 
 ## License
 

@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics para Moodle"
   },
   "extensionDescription": {
-    "message": "Importa rúbricas de Moodle desde archivos CSV."
+    "message": "Importa rúbricas de Moodle desde archivos CSV y Excel."
   },
   "dropZoneTitle": {
-    "message": "Importar una rúbrica desde CSV"
+    "message": "Importar una rúbrica desde CSV o Excel"
   },
   "dropZoneStrong": {
     "message": "Haz clic para seleccionar"
   },
   "dropZoneText": {
-    "message": " o arrastra y suelta aquí un archivo CSV"
+    "message": " o arrastra y suelta aquí un archivo CSV o Excel"
   },
   "startingImport": {
     "message": "Iniciando importación..."
@@ -35,7 +35,7 @@
     "message": "Error al seleccionar el archivo"
   },
   "invalidFileType": {
-    "message": "Tipo de archivo no válido. Suelta un archivo CSV."
+    "message": "Tipo de archivo no válido. Suelta un archivo CSV o Excel .xlsx."
   },
   "workshopInvalidCriterion": {
     "message": "El criterio $CRITERION$ no es válido para Workshop. Las puntuaciones deben ser números enteros únicos entre 0 y 100.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "Este Workshop ya contiene una rúbrica. ¿Quieres reemplazarla con el contenido del CSV?"
+    "message": "Este Workshop ya contiene una rúbrica. ¿Quieres reemplazarla con el contenido del archivo seleccionado?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "Esta rúbrica necesita más niveles de los que Moodle muestra ahora. MoodlIA guardará temporalmente el formulario para crear los espacios necesarios y continuará la importación. ¿Quieres continuar?"

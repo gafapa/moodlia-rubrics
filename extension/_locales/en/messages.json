@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics for Moodle"
   },
   "extensionDescription": {
-    "message": "Imports Moodle rubrics from CSV files."
+    "message": "Imports Moodle rubrics from CSV and Excel files."
   },
   "dropZoneTitle": {
-    "message": "Import a rubric from CSV"
+    "message": "Import a rubric from CSV or Excel"
   },
   "dropZoneStrong": {
     "message": "Click to select"
   },
   "dropZoneText": {
-    "message": " or drag and drop a CSV file here"
+    "message": " or drag and drop a CSV or Excel file here"
   },
   "startingImport": {
     "message": "Starting import..."
@@ -35,7 +35,7 @@
     "message": "Error selecting file"
   },
   "invalidFileType": {
-    "message": "Invalid file type. Please drop a CSV file."
+    "message": "Invalid file type. Please drop a CSV or Excel .xlsx file."
   },
   "workshopInvalidCriterion": {
     "message": "Criterion $CRITERION$ is not valid for Workshop. Grades must be unique integers between 0 and 100.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "This Workshop already contains a rubric. Replace it with the CSV contents?"
+    "message": "This Workshop already contains a rubric. Replace it with the selected file contents?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "This rubric needs more levels than Moodle currently shows. MoodlIA will temporarily save the form to create the required spaces and continue the import. Continue?"

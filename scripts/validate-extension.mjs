@@ -192,6 +192,7 @@ function validateLocaleMessages(locale, messages, defaultKeys) {
 
 function validateJavaScriptSyntax() {
   const scriptPaths = [
+    join(extensionDir, 'scripts', 'vendor', 'fflate.js'),
     join(extensionDir, 'scripts', 'workbook.js'),
     join(extensionDir, 'scripts', 'rubric-model.js'),
     join(extensionDir, 'scripts', 'content.js'),

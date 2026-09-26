@@ -6,7 +6,7 @@
     <title data-i18n="meta.indexTitle">Rubricando para Moodle</title>
     <meta
       name="description"
-      content="Rubricando para Moodle es una extensión que importa rúbricas de Moodle desde archivos CSV."
+      content="Rubricando para Moodle es una extensión que importa rúbricas de Moodle desde archivos CSV y Excel."
       data-i18n-attr="content:meta.indexDescription"
     >
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
@@ -25,7 +25,7 @@
       <div class="header-actions">
         <nav class="site-nav" data-i18n-attr="aria-label:nav.sections">
           <a href="#workflow" data-i18n="nav.workflow">Flujo</a>
-          <a href="#format" data-i18n="nav.format">Formato CSV</a>
+          <a href="#format" data-i18n="nav.format">Formato CSV/Excel</a>
           <a href="#ai-prompt" data-i18n="nav.prompt">Prompt IA</a>
           <a href="#install" data-i18n="nav.install">Instalación</a>
           <a href="privacy-policy.html" data-i18n="nav.privacy">Privacidad</a>
@@ -49,11 +49,11 @@
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="index.heroEyebrow">Importación CSV para el editor de rúbricas de Moodle</p>
-          <h1 data-i18n="index.heroTitle">Crea rúbricas de Moodle desde un CSV en lugar de rellenar cada celda a mano.</h1>
+          <p class="eyebrow" data-i18n="index.heroEyebrow">Importación CSV y Excel para el editor de rúbricas de Moodle</p>
+          <h1 data-i18n="index.heroTitle">Crea rúbricas de Moodle desde CSV o Excel en lugar de rellenar cada celda a mano.</h1>
           <p data-i18n="index.heroText">
             Rubricando para Moodle añade una capa de importación ligera sobre el editor de rúbricas de Moodle.
-            Suelta un CSV, revisa la estructura y deja que la extensión complete criterios, descripciones de nivel
+            Suelta un CSV o Excel, revisa la estructura y deja que la extensión complete criterios, descripciones de nivel
             y puntuaciones directamente en la página que ya usas.
           </p>
           <div class="hero-actions">
@@ -64,11 +64,11 @@
               rel="noopener noreferrer"
               data-i18n="index.installCta"
             >Instalar desde Chrome Web Store</a>
-            <a class="button secondary" href="#format" data-i18n="index.formatCta">Ver formato CSV</a>
+            <a class="button secondary" href="#format" data-i18n="index.formatCta">Ver formato CSV/Excel</a>
           </div>
           <ul class="hero-points" data-i18n-attr="aria-label:index.heroPointsLabel">
             <li data-i18n="index.pointOne">Funciona directamente dentro de las páginas de edición de rúbricas de Moodle</li>
-            <li data-i18n="index.pointTwo">Acepta archivos CSV simples con dos filas por criterio</li>
+            <li data-i18n="index.pointTwo">Acepta archivos CSV y Excel con dos filas por criterio</li>
             <li data-i18n="index.pointThree">Mantiene la extensión ligera con un parser CSV nativo</li>
           </ul>
         </div>
@@ -87,13 +87,13 @@
       <section id="workflow" class="section workflow-section">
         <div class="section-heading">
           <h2 data-i18n="index.workflowTitle">Así funciona</h2>
-          <p data-i18n="index.workflowText">Hay dos momentos clave: importar el CSV y terminar con una rúbrica ya estructurada dentro de Moodle.</p>
+          <p data-i18n="index.workflowText">Hay dos momentos clave: importar el CSV o Excel y terminar con una rúbrica ya estructurada dentro de Moodle.</p>
         </div>
         <div class="workflow-grid">
           <article class="shot-card">
             <div class="shot-copy">
               <span class="shot-step">01</span>
-              <h3 data-i18n="index.stepOneTitle">Suelta el CSV sobre el editor de rúbricas</h3>
+              <h3 data-i18n="index.stepOneTitle">Suelta el CSV o Excel sobre el editor de rúbricas</h3>
               <p data-i18n="index.stepOneText">
                 La extensión inserta una zona de importación visible en las URLs compatibles del editor de rúbricas
                 de Moodle, así que la importación empieza exactamente donde se está editando la rúbrica.
@@ -130,7 +130,7 @@
 
       <section id="format" class="section format-section">
         <div class="section-heading">
-          <h2 data-i18n="index.formatTitle">Cómo debe estructurarse el CSV</h2>
+          <h2 data-i18n="index.formatTitle">Cómo debe estructurarse el CSV/Excel</h2>
           <p data-i18n="index.formatText">El formato es deliberadamente simple. Cada criterio ocupa dos filas y crece hacia la derecha.</p>
         </div>
         <div class="format-layout">

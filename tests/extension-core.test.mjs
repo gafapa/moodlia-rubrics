@@ -4,6 +4,9 @@ import path from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { DOMParser } from '@xmldom/xmldom';
+import { zipSync, strToU8 } from 'fflate';
+import { JSDOM } from 'jsdom';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -20,16 +23,82 @@ test('CSV parser detects delimiters, quoted fields, and scalar values', async ()
   assert.equal(sheet.C2.v, 7.5);
 });
 
-test('CSV parser rejects unsupported workbook formats', async () => {
+test('workbook parser rejects unsupported formats', async () => {
   const sandbox = { window: {}, TextDecoder, URL };
   await evaluate('extension/scripts/workbook.js', sandbox);
-  await assert.rejects(() => sandbox.window.RubricWorkbookParser.parse('rubric.xlsx', new Uint8Array()), /Unsupported/);
+  await assert.rejects(() => sandbox.window.RubricWorkbookParser.parse('rubric.xls', new Uint8Array()), /Unsupported/);
+});
+
+test('Excel parser reads the first worksheet and maps shared, inline, and numeric cells', async () => {
+  const sandbox = { window: {}, TextDecoder, DOMParser };
+  await evaluate('extension/scripts/vendor/fflate.js', sandbox);
+  await evaluate('extension/scripts/workbook.js', sandbox);
+  await evaluate('extension/scripts/rubric-model.js', sandbox);
+  const workbook = zipSync({
+    'xl/workbook.xml': strToU8('<workbook xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Rubric" r:id="rId2"/><sheet name="Other" r:id="rId3"/></sheets></workbook>'),
+    'xl/_rels/workbook.xml.rels': strToU8('<Relationships><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet2.xml"/></Relationships>'),
+    'xl/sharedStrings.xml': strToU8('<sst><si><t>Clarity</t></si><si><r><t>Very </t></r><r><t>good</t></r></si></sst>'),
+    'xl/worksheets/sheet2.xml': strToU8('<worksheet><sheetData><row r="1"><c r="A1" t="s"><v>0</v></c><c r="B1" t="inlineStr"><is><t>Needs work</t></is></c><c r="C1" t="s"><v>1</v></c></row><row r="2"><c r="B2"><v>0</v></c><c r="C2"><f>5+5</f><v>10</v></c></row></sheetData></worksheet>')
+  });
+  const sheet = await sandbox.window.RubricWorkbookParser.parse('rubric.xlsx', workbook);
+  const model = sandbox.RubricImportModel.fromSheet(sheet);
+  assert.equal(model.criteria[0].description, 'Clarity');
+  assert.deepEqual(Array.from(model.criteria[0].levels, level => ({ ...level })), [
+    { definition: 'Needs work', grade: 0 },
+    { definition: 'Very good', grade: 10 }
+  ]);
+});
+
+test('Excel parser rejects malformed workbooks', async () => {
+  const sandbox = { window: {}, TextDecoder, DOMParser };
+  await evaluate('extension/scripts/vendor/fflate.js', sandbox);
+  await evaluate('extension/scripts/workbook.js', sandbox);
+  await assert.rejects(() => sandbox.window.RubricWorkbookParser.parse('rubric.xlsx', new Uint8Array()), /not a readable/);
+});
+
+test('Excel parser accepts grades stored as shared strings', async () => {
+  const sandbox = { window: {}, TextDecoder, DOMParser };
+  await evaluate('extension/scripts/vendor/fflate.js', sandbox);
+  await evaluate('extension/scripts/workbook.js', sandbox);
+  await evaluate('extension/scripts/rubric-model.js', sandbox);
+  const workbook = zipSync({
+    'xl/workbook.xml': strToU8('<workbook xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Rubric" r:id="rId1"/></sheets></workbook>'),
+    'xl/_rels/workbook.xml.rels': strToU8('<Relationships><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/></Relationships>'),
+    'xl/sharedStrings.xml': strToU8('<sst><si><t>Criterion</t></si><si><t>Level</t></si><si><t>0.6</t></si></sst>'),
+    'xl/worksheets/sheet1.xml': strToU8('<worksheet><sheetData><row r="1"><c r="A1" t="s"><v>0</v></c><c r="B1" t="s"><v>1</v></c></row><row r="2"><c r="B2" t="s"><v>2</v></c></row></sheetData></worksheet>')
+  });
+  const sheet = await sandbox.window.RubricWorkbookParser.parse('rubric.xlsx', workbook.buffer.slice(workbook.byteOffset, workbook.byteOffset + workbook.byteLength));
+  const model = sandbox.RubricImportModel.fromSheet(sheet);
+  assert.equal(model.criteria[0].levels[0].grade, 0.6);
+});
+
+test('assignment importer clicks Moodle add-level control and waits for the new level', async () => {
+  const dom = new JSDOM('<table id="rubric-criteria"><tbody><tr><td class="description"></td><td><table><tbody><tr id="levels"><td class="level"></td><td class="level"></td><td class="level"></td></tr></tbody></table></td><td class="addlevel"><input type="submit" id="add-level"></td></tr></tbody></table>', { pretendToBeVisual: true });
+  const sandbox = { window: dom.window, document: dom.window.document, requestAnimationFrame: dom.window.requestAnimationFrame.bind(dom.window), setTimeout, Date };
+  sandbox.window.__rubricandoImporterLoaded = true;
+  await evaluate('extension/scripts/content.js', sandbox);
+  const importerClass = vm.runInContext('RubricImporter', sandbox);
+  const importer = Object.create(importerClass.prototype);
+  importer.tbody = dom.window.document.querySelector('#rubric-criteria tbody');
+  const button = dom.window.document.getElementById('add-level');
+  button.addEventListener('click', event => {
+    event.preventDefault();
+    setTimeout(() => {
+      const level = dom.window.document.createElement('td');
+      level.className = 'level';
+      dom.window.document.getElementById('levels').append(level);
+    }, 20);
+  });
+
+  await importer.newStandardLevel(0);
+  assert.equal(dom.window.document.querySelectorAll('#levels td.level').length, 4);
 });
 
 test('host access normalizes Moodle base paths and rejects insecure hosts', async () => {
   const sandbox = { URL };
   await evaluate('extension/scripts/host-access.js', sandbox);
   const access = sandbox.RubricandoHostAccess;
+  assert.deepEqual(Array.from(access.contentScripts.slice(0, 2)), ['scripts/vendor/fflate.js', 'scripts/workbook.js']);
   const site = access.normalizeInput('campus.example.edu/moodle/grade/grading/form/rubric/edit.php?id=3');
 
   assert.equal(site.originPattern, 'https://campus.example.edu/*');

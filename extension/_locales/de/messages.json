@@ -3,16 +3,16 @@
     "message": "MoodlIA Rubrics für Moodle"
   },
   "extensionDescription": {
-    "message": "Importiert Moodle-Bewertungsraster aus CSV-Dateien."
+    "message": "Importiert Moodle-Bewertungsraster aus CSV- und Excel-Dateien."
   },
   "dropZoneTitle": {
-    "message": "Ein Bewertungsraster aus CSV importieren"
+    "message": "Ein Bewertungsraster aus CSV oder Excel importieren"
   },
   "dropZoneStrong": {
     "message": "Zum Auswählen klicken"
   },
   "dropZoneText": {
-    "message": " oder eine CSV-Datei hierher ziehen"
+    "message": " oder eine CSV- oder Excel-Datei hierher ziehen"
   },
   "startingImport": {
     "message": "Import wird gestartet..."
@@ -35,7 +35,7 @@
     "message": "Fehler beim Auswählen der Datei"
   },
   "invalidFileType": {
-    "message": "Ungültiger Dateityp. Bitte eine CSV-Datei ablegen."
+    "message": "Ungültiger Dateityp. Bitte eine CSV- oder Excel-.xlsx-Datei ablegen."
   },
   "workshopInvalidCriterion": {
     "message": "Kriterium $CRITERION$ ist für Workshop ungültig. Bewertungen müssen eindeutige ganze Zahlen zwischen 0 und 100 sein.",
@@ -46,7 +46,7 @@
     }
   },
   "workshopReplaceConfirmation": {
-    "message": "Dieser Workshop enthält bereits ein Bewertungsraster. Durch den CSV-Inhalt ersetzen?"
+    "message": "Dieser Workshop enthält bereits ein Bewertungsraster. Durch den Inhalt der ausgewählten Datei ersetzen?"
   },
   "workshopAutoSaveConfirmation": {
     "message": "Dieses Bewertungsraster benötigt mehr Stufen, als Moodle derzeit anzeigt. MoodlIA speichert das Formular vorübergehend, erstellt die nötigen Felder und setzt den Import fort. Fortfahren?"

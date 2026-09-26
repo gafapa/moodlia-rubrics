@@ -4,7 +4,7 @@ const RubricandoHostAccess = {
 	legacyStorageArea: 'sync',
 	contentScriptPrefix: 'rubricando-site-',
 	contentStyles: ['styles/main.css', 'styles/toast.css', 'styles/dropzone.css'],
-	contentScripts: ['scripts/workbook.js', 'scripts/rubric-model.js', 'scripts/i18n.js', 'scripts/content.js'],
+	contentScripts: ['scripts/vendor/fflate.js', 'scripts/workbook.js', 'scripts/rubric-model.js', 'scripts/i18n.js', 'scripts/content.js'],
 	rubricPathSuffixes: [
 		'/grade/grading/form/rubric/edit.php*',
 		'/mod/workshop/editform.php*'
