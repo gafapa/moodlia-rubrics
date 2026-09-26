@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1 - 2026-09-26
+
+- Make the localized store summaries explicitly mention Assignment and Workshop rubrics.
+
 ## Unreleased
 
 - Import assignment and Workshop rubrics from Excel `.xlsx` workbooks, using the

@@ -3,7 +3,7 @@
     "message": "MoodlIA Rubrics Moodlerako"
   },
   "extensionDescription": {
-    "message": "Moodleko errubrikak CSV eta Excel fitxategietatik inportatzen ditu."
+    "message": "Inportatu Moodleko Zeregin eta Tailerretarako errubrikak CSV eta Excel fitxategietatik."
   },
   "dropZoneTitle": {
     "message": "Inportatu errubrika bat CSV edo Excel fitxategitik"

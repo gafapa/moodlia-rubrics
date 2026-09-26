@@ -3,7 +3,7 @@
     "message": "MoodlIA Rubrics für Moodle"
   },
   "extensionDescription": {
-    "message": "Importiert Moodle-Bewertungsraster aus CSV- und Excel-Dateien."
+    "message": "Importiert Bewertungsraster für Moodle-Aufgaben und Workshops aus CSV- und Excel-Dateien."
   },
   "dropZoneTitle": {
     "message": "Ein Bewertungsraster aus CSV oder Excel importieren"
