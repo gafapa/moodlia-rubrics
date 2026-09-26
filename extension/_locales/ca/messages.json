@@ -3,7 +3,7 @@
     "message": "MoodlIA Rubrics per a Moodle"
   },
   "extensionDescription": {
-    "message": "Importa rúbriques de Moodle des de fitxers CSV i Excel."
+    "message": "Importa rúbriques per a tasques i tallers de Moodle des de fitxers CSV i Excel."
   },
   "dropZoneTitle": {
     "message": "Importa una rúbrica des de CSV o Excel"

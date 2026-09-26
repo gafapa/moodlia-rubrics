@@ -3,7 +3,7 @@
     "message": "MoodlIA Rubrics pour Moodle"
   },
   "extensionDescription": {
-    "message": "Importe des grilles d'évaluation Moodle depuis des fichiers CSV et Excel."
+    "message": "Importe des grilles d'évaluation pour les devoirs et ateliers Moodle depuis des fichiers CSV et Excel."
   },
   "dropZoneTitle": {
     "message": "Importer une grille depuis un CSV ou Excel"

@@ -3,7 +3,7 @@
     "message": "MoodlIA Rubrics para Moodle"
   },
   "extensionDescription": {
-    "message": "Importa rubricas do Moodle a partir de arquivos CSV e Excel."
+    "message": "Importa rubricas para Tarefas e Oficinas do Moodle a partir de arquivos CSV e Excel."
   },
   "dropZoneTitle": {
     "message": "Importar uma rubrica de CSV ou Excel"
