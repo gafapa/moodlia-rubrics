@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "Le critère $CRITERION$ n'est pas valide pour l'Atelier. Les notes doivent être des nombres entiers uniques compris entre 0 et 100.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "Cet Atelier contient déjà une grille d'évaluation. La remplacer par le contenu du CSV ?"
@@ -63,7 +67,7 @@
     "message": "Sites Moodle autorisés"
   },
   "optionsIntro": {
-    "message": "Ajoutez chaque site Moodle où MoodlIA Rubrics doit s'exécuter automatiquement. L'extension ne s'active que sur les hôtes autorisés ici."
+    "message": "Sites Moodle sur lesquels l'importateur s'active automatiquement. Sur tout autre Moodle, cliquez sur l'icône de l'extension depuis la page de la grille."
   },
   "optionsInputLabel": {
     "message": "URL Moodle"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Site Moodle supprimé avec succès."
   },
-  "optionsBuiltIn": {
-    "message": "Inclus"
+  "optionsPermissionMissing": {
+    "message": "Sans autorisation"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "Ce site Moodle est d?j? inclus par d?faut."
+  "optionsGrant": {
+    "message": "Accorder l'autorisation"
+  },
+  "popupNotRubricPage": {
+    "message": "Ouvrez dans Moodle la page de modification d'une grille d'évaluation ou le formulaire d'évaluation d'un atelier, puis cliquez à nouveau sur cette icône."
+  },
+  "popupActivated": {
+    "message": "Importateur activé sur cette page."
+  },
+  "popupActivationFailed": {
+    "message": "Impossible d'activer l'importateur sur cette page."
+  },
+  "popupAlwaysHint": {
+    "message": "Pour ne pas avoir à cliquer sur l'icône à chaque fois, activez-le automatiquement sur ce Moodle. Chrome demandera l'autorisation pour ce site uniquement."
+  },
+  "popupAlwaysButton": {
+    "message": "Toujours activer sur ce site"
+  },
+  "popupAlwaysOn": {
+    "message": "S'active automatiquement sur ce site."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Ne plus activer sur ce site"
+  },
+  "popupManageSites": {
+    "message": "Gérer les sites"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "Nouveautés de MoodlIA Rubrics"
+  },
+  "whatsNewTitle": {
+    "message": "MoodlIA Rubrics a changé"
+  },
+  "whatsNewIntro": {
+    "message": "Depuis la version 1.2.0, l'extension ne s'active plus d'elle-même sur les Moodle de la Xunta et ne demande aucune autorisation de site à l'installation. Elle fonctionne désormais de la même façon sur n'importe quel Moodle :"
+  },
+  "whatsNewStepClick": {
+    "message": "Sur la page de modification d'une grille ou le formulaire d'un atelier, cliquez sur l'icône de l'extension : l'importateur apparaît sur cette page."
+  },
+  "whatsNewStepAlways": {
+    "message": "Si vous l'utilisez souvent sur un Moodle, cliquez sur « Toujours activer sur ce site » dans le même menu. Chrome demandera l'autorisation pour ce site uniquement et l'importateur apparaîtra ensuite tout seul."
+  },
+  "whatsNewPin": {
+    "message": "Astuce : épinglez l'icône dans la barre de Chrome avec le bouton des extensions (la pièce de puzzle) pour l'avoir sous la main."
+  },
+  "whatsNewSites": {
+    "message": "Les sites déjà ajoutés dans les options continuent de fonctionner comme avant."
   }
 }

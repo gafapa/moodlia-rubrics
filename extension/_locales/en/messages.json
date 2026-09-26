@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "Criterion $CRITERION$ is not valid for Workshop. Grades must be unique integers between 0 and 100.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "This Workshop already contains a rubric. Replace it with the CSV contents?"
@@ -63,7 +67,7 @@
     "message": "Allowed Moodle sites"
   },
   "optionsIntro": {
-    "message": "Add each Moodle site where MoodlIA Rubrics should run automatically. The extension only activates on hosts you allow here."
+    "message": "Moodle sites where the importer activates automatically. On any other Moodle, click the extension icon on the rubric page."
   },
   "optionsInputLabel": {
     "message": "Moodle URL"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Moodle site removed successfully."
   },
-  "optionsBuiltIn": {
-    "message": "Included"
+  "optionsPermissionMissing": {
+    "message": "No permission"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "This Moodle site is already included by default."
+  "optionsGrant": {
+    "message": "Grant permission"
+  },
+  "popupNotRubricPage": {
+    "message": "Open a rubric editing page or a Workshop assessment form in Moodle, then click this icon again."
+  },
+  "popupActivated": {
+    "message": "Importer activated on this page."
+  },
+  "popupActivationFailed": {
+    "message": "The importer could not be activated on this page."
+  },
+  "popupAlwaysHint": {
+    "message": "To avoid clicking the icon every time, activate it automatically on this Moodle. Chrome asks for permission for this site only."
+  },
+  "popupAlwaysButton": {
+    "message": "Always activate on this site"
+  },
+  "popupAlwaysOn": {
+    "message": "Activates automatically on this site."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Stop activating on this site"
+  },
+  "popupManageSites": {
+    "message": "Manage sites"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "What's new in MoodlIA Rubrics"
+  },
+  "whatsNewTitle": {
+    "message": "MoodlIA Rubrics has changed"
+  },
+  "whatsNewIntro": {
+    "message": "Since version 1.2.0 the extension no longer activates by itself on the Xunta Moodle sites and asks for no site permissions when installed. It now works the same on any Moodle:"
+  },
+  "whatsNewStepClick": {
+    "message": "On a rubric editing page or a Workshop assessment form, click the extension icon: the importer appears on that page."
+  },
+  "whatsNewStepAlways": {
+    "message": "If you use it often on one Moodle, click “Always activate on this site” in the same menu. Chrome asks for permission for that site only, and from then on the importer appears by itself."
+  },
+  "whatsNewPin": {
+    "message": "Tip: pin the icon to the Chrome toolbar from the extensions button (the puzzle piece) to keep it at hand."
+  },
+  "whatsNewSites": {
+    "message": "Sites you had already added in the options keep working as before."
   }
 }

@@ -209,3 +209,19 @@ body {
     width: 100%;
   }
 }
+
+.whats-new-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding-left: 22px;
+  line-height: 1.5;
+}
+
+.host-status {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--danger);
+  font-size: 0.85em;
+  font-weight: 600;
+}

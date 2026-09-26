@@ -1,5 +1,9 @@
-(function initializeOptionsPage() {
-	const message = (key) => chrome.i18n.getMessage(key) || key;
+(async function initializeOptionsPage() {
+	// The shared loader also covers Galician and Basque, which chrome.i18n does not.
+	const i18n = new RubricImporterI18n();
+	await i18n.init();
+	const message = (key) => i18n.getMessage(key);
+	document.documentElement.lang = i18n.locale.replace('_', '-');
 	const hostInput = document.getElementById('host-input');
 	const addHostButton = document.getElementById('add-host');
 	const hostList = document.getElementById('host-list');
@@ -15,43 +19,60 @@
 	});
 
 	async function renderSites() {
-		const builtInSites = RubricandoHostAccess.getBuiltInSites();
-		const storedSites = await RubricandoHostAccess.getStoredSites();
-		const sites = [...builtInSites, ...storedSites];
+		const sites = await RubricandoHostAccess.getStoredSites();
 		hostList.innerHTML = '';
 		hostEmpty.hidden = sites.length > 0;
 
 		for (const site of sites) {
+			const granted = await RubricandoHostAccess.hasOriginPermission(site.originPattern);
 			const listItem = document.createElement('li');
 			listItem.className = 'host-item';
 
 			const textWrapper = document.createElement('div');
 			const title = document.createElement('strong');
 			title.textContent = site.label;
-			if (site.builtIn) {
-				const badge = document.createElement('span');
-				badge.className = 'host-badge';
-				badge.textContent = message('optionsBuiltIn');
-				title.append(' ', badge);
+			if (!granted) {
+				const missing = document.createElement('span');
+				missing.className = 'host-status';
+				missing.textContent = message('optionsPermissionMissing');
+				title.append(missing);
 			}
 			const subtitle = document.createElement('span');
 			subtitle.textContent = RubricandoHostAccess.buildMatches(site).join(' | ');
 			textWrapper.append(title, subtitle);
-
 			listItem.append(textWrapper);
 
-			if (!site.builtIn) {
-				const removeButton = document.createElement('button');
-				removeButton.type = 'button';
-				removeButton.textContent = message('optionsRemove');
-				removeButton.addEventListener('click', async () => {
-					await removeSite(site);
+			if (!granted) {
+				const grantButton = document.createElement('button');
+				grantButton.type = 'button';
+				grantButton.textContent = message('optionsGrant');
+				grantButton.addEventListener('click', async () => {
+					await grantSite(site);
 				});
-				listItem.appendChild(removeButton);
+				listItem.appendChild(grantButton);
 			}
+
+			const removeButton = document.createElement('button');
+			removeButton.type = 'button';
+			removeButton.textContent = message('optionsRemove');
+			removeButton.addEventListener('click', async () => {
+				await removeSite(site);
+			});
+			listItem.appendChild(removeButton);
 
 			hostList.appendChild(listItem);
 		}
+	}
+
+	async function grantSite(site) {
+		const granted = await chrome.permissions.request({ origins: [site.originPattern] });
+		if (!granted) {
+			setStatus(message('optionsPermissionDenied'), 'error');
+			return;
+		}
+		await chrome.runtime.sendMessage({ type: 'sync-sites' });
+		setStatus(message('optionsRequestSuccess'), 'success');
+		await renderSites();
 	}
 
 	function setStatus(text, type = '') {
@@ -70,25 +91,13 @@
 			return;
 		}
 
-		if (RubricandoHostAccess.isBuiltInSite(site)) {
-			setStatus(message('optionsAlreadyBuiltIn'), 'success');
-			hostInput.value = '';
-			await renderSites();
-			return;
-		}
-
 		const granted = await chrome.permissions.request({ origins: [site.originPattern] });
 		if (!granted) {
 			setStatus(message('optionsPermissionDenied'), 'error');
 			return;
 		}
 
-		const sites = await RubricandoHostAccess.getStoredSites();
-		if (!sites.some(existingSite => existingSite.id === site.id)) {
-			sites.push(site);
-			sites.sort((leftSite, rightSite) => leftSite.label.localeCompare(rightSite.label));
-			await RubricandoHostAccess.saveStoredSites(sites);
-		}
+		await RubricandoHostAccess.addStoredSite(site);
 
 		await chrome.runtime.sendMessage({ type: 'sync-sites' });
 		hostInput.value = '';
@@ -97,10 +106,7 @@
 	}
 
 	async function removeSite(site) {
-		const sites = await RubricandoHostAccess.getStoredSites();
-		const updatedSites = sites.filter(existingSite => existingSite.id !== site.id);
-
-		await RubricandoHostAccess.saveStoredSites(updatedSites);
+		await RubricandoHostAccess.removeStoredSite(site);
 		await chrome.permissions.remove({ origins: [site.originPattern] });
 		await chrome.runtime.sendMessage({ type: 'sync-sites' });
 		setStatus(message('optionsRemoved'), 'success');

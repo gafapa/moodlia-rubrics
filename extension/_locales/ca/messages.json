@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "El criteri $CRITERION$ no és vàlid per al Taller. Les puntuacions han de ser nombres enters únics entre 0 i 100.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "Aquest Taller ja conté una rúbrica. La vols substituir pel contingut del CSV?"
@@ -63,7 +67,7 @@
     "message": "Llocs de Moodle permesos"
   },
   "optionsIntro": {
-    "message": "Afegeix cada lloc de Moodle on MoodlIA Rubrics s'hagi d'executar automàticament. L'extensió només s'activa als hosts que permets aquí."
+    "message": "Llocs de Moodle on l'importador s'activa automàticament. En qualsevol altre Moodle, fes clic a la icona de l'extensió a la pàgina de la rúbrica."
   },
   "optionsInputLabel": {
     "message": "URL de Moodle"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Lloc de Moodle eliminat correctament."
   },
-  "optionsBuiltIn": {
-    "message": "Incl?s"
+  "optionsPermissionMissing": {
+    "message": "Sense permís"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "Aquest lloc de Moodle ja est? incl?s de manera predeterminada."
+  "optionsGrant": {
+    "message": "Concedeix el permís"
+  },
+  "popupNotRubricPage": {
+    "message": "Obre a Moodle la pàgina d'edició d'una rúbrica o el formulari d'avaluació d'un taller i torna a fer clic en aquesta icona."
+  },
+  "popupActivated": {
+    "message": "Importador activat en aquesta pàgina."
+  },
+  "popupActivationFailed": {
+    "message": "No s'ha pogut activar l'importador en aquesta pàgina."
+  },
+  "popupAlwaysHint": {
+    "message": "Per no haver de fer clic a la icona cada vegada, activa'l automàticament en aquest Moodle. Chrome et demanarà permís només per a aquest lloc."
+  },
+  "popupAlwaysButton": {
+    "message": "Activa sempre en aquest lloc"
+  },
+  "popupAlwaysOn": {
+    "message": "S'activa automàticament en aquest lloc."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Deixa d'activar en aquest lloc"
+  },
+  "popupManageSites": {
+    "message": "Gestiona els llocs"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "Novetats de MoodlIA Rubrics"
+  },
+  "whatsNewTitle": {
+    "message": "MoodlIA Rubrics ha canviat"
+  },
+  "whatsNewIntro": {
+    "message": "Des de la versió 1.2.0 l'extensió ja no s'activa sola als Moodle de la Xunta ni demana permisos per a cap lloc en instal·lar-la. Ara funciona igual en qualsevol Moodle:"
+  },
+  "whatsNewStepClick": {
+    "message": "A la pàgina d'edició d'una rúbrica o del formulari d'un taller, fes clic a la icona de l'extensió: l'importador apareix en aquesta pàgina."
+  },
+  "whatsNewStepAlways": {
+    "message": "Si la fas servir sovint en un Moodle, fes clic a «Activa sempre en aquest lloc» en el mateix menú. Chrome et demanarà permís només per a aquest lloc i, des d'aleshores, l'importador apareixerà sol."
+  },
+  "whatsNewPin": {
+    "message": "Consell: fixa la icona a la barra de Chrome amb el botó d'extensions (la peça de trencaclosques) per tenir-la a mà."
+  },
+  "whatsNewSites": {
+    "message": "Els llocs que ja havies afegit a les opcions continuen funcionant igual."
   }
 }

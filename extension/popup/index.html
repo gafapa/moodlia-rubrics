@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MoodlIA Rubrics</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup-header">
+        <img src="../images/icon-48.png" alt="" width="28" height="28">
+        <h1 data-i18n="extensionName"></h1>
+      </header>
+
+      <p id="status" class="popup-status" role="status" aria-live="polite"></p>
+
+      <section id="always-section" class="popup-always" hidden>
+        <p id="site-label" class="popup-site"></p>
+        <p id="always-hint" class="popup-hint" data-i18n="popupAlwaysHint"></p>
+        <button id="always-button" type="button" data-i18n="popupAlwaysButton"></button>
+        <p id="always-on" class="popup-on" data-i18n="popupAlwaysOn" hidden></p>
+        <button id="always-off-button" type="button" class="secondary" data-i18n="popupAlwaysOffButton" hidden></button>
+      </section>
+
+      <footer class="popup-footer">
+        <button id="manage-sites" type="button" class="link" data-i18n="popupManageSites"></button>
+      </footer>
+    </main>
+
+    <script src="../scripts/i18n.js"></script>
+    <script src="../scripts/host-access.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

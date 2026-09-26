@@ -198,7 +198,9 @@ function validateJavaScriptSyntax() {
     join(extensionDir, 'scripts', 'host-access.js'),
     join(extensionDir, 'scripts', 'i18n.js'),
     join(extensionDir, 'scripts', 'service-worker.js'),
-    join(extensionDir, 'options', 'options.js')
+    join(extensionDir, 'options', 'options.js'),
+    join(extensionDir, 'popup', 'popup.js'),
+    join(extensionDir, 'whats-new', 'whats-new.js')
   ];
 
   for (const scriptPath of scriptPaths) {
@@ -213,9 +215,52 @@ function validateJavaScriptSyntax() {
   }
 }
 
+// The extension must not ask for site access at install time: it activates through activeTab
+// or through per-site optional permissions granted by the user.
+function validateLeastPrivilege(manifest) {
+  if (!manifest) return;
+
+  if (Array.isArray(manifest.host_permissions) && manifest.host_permissions.length > 0) {
+    errors.push('host_permissions must be empty; request sites through optional_host_permissions.');
+  }
+
+  if (Array.isArray(manifest.content_scripts) && manifest.content_scripts.length > 0) {
+    errors.push('content_scripts must be empty; register them for granted sites or inject through activeTab.');
+  }
+
+  for (const pattern of manifest.optional_host_permissions ?? []) {
+    if (!String(pattern).startsWith('https://')) {
+      errors.push(`optional_host_permissions must be HTTPS only: ${pattern}`);
+    }
+  }
+}
+
+// Every data-i18n key used by an extension page must exist in the default locale.
+function validatePageMessages(manifest) {
+  const defaultMessages = readLocaleMessages(manifest?.default_locale);
+  if (!defaultMessages) return;
+
+  for (const page of ['popup/index.html', 'whats-new/index.html', 'options/index.html']) {
+    const pagePath = join(extensionDir, page);
+    if (!existsSync(pagePath)) {
+      errors.push(`Extension page is missing: ${page}`);
+      continue;
+    }
+
+    const html = readFileSync(pagePath, 'utf8');
+    for (const match of html.matchAll(/data-i18n(?:-placeholder)?="([^"]+)"/g)) {
+      if (!defaultMessages[match[1]]) {
+        errors.push(`${page} references missing locale message: ${match[1]}`);
+      }
+    }
+  }
+}
+
 const manifest = readManifest();
 validateManifest(manifest);
+validateLeastPrivilege(manifest);
 validateLocales(manifest);
+validatePageMessages(manifest);
 validateJavaScriptSyntax();
 
 if (errors.length > 0) {

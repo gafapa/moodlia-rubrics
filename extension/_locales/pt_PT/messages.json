@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "O critério $CRITERION$ não é válido para Workshop. As pontuações devem ser números inteiros únicos entre 0 e 100.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "Este Workshop já contém uma rúbrica. Pretende substituí-la pelo conteúdo do CSV?"
@@ -63,7 +67,7 @@
     "message": "Sites Moodle permitidos"
   },
   "optionsIntro": {
-    "message": "Adicione cada site Moodle onde o MoodlIA Rubrics deve ser executado automaticamente. A extensão só é ativada nos hosts permitidos aqui."
+    "message": "Sites Moodle onde o importador é ativado automaticamente. Em qualquer outro Moodle, clique no ícone da extensão na página da rubrica."
   },
   "optionsInputLabel": {
     "message": "URL do Moodle"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Site Moodle removido com sucesso."
   },
-  "optionsBuiltIn": {
-    "message": "Inclu?do"
+  "optionsPermissionMissing": {
+    "message": "Sem permissão"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "Este site Moodle j? est? inclu?do por predefini??o."
+  "optionsGrant": {
+    "message": "Conceder permissão"
+  },
+  "popupNotRubricPage": {
+    "message": "Abra no Moodle a página de edição de uma rubrica ou o formulário de avaliação de um workshop e clique novamente neste ícone."
+  },
+  "popupActivated": {
+    "message": "Importador ativado nesta página."
+  },
+  "popupActivationFailed": {
+    "message": "Não foi possível ativar o importador nesta página."
+  },
+  "popupAlwaysHint": {
+    "message": "Para não ter de clicar no ícone sempre, ative-o automaticamente neste Moodle. O Chrome pede permissão apenas para este site."
+  },
+  "popupAlwaysButton": {
+    "message": "Ativar sempre neste site"
+  },
+  "popupAlwaysOn": {
+    "message": "É ativado automaticamente neste site."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Deixar de ativar neste site"
+  },
+  "popupManageSites": {
+    "message": "Gerir sites"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "Novidades do MoodlIA Rubrics"
+  },
+  "whatsNewTitle": {
+    "message": "O MoodlIA Rubrics mudou"
+  },
+  "whatsNewIntro": {
+    "message": "Desde a versão 1.2.0, a extensão já não é ativada sozinha nos Moodle da Xunta nem pede permissões para nenhum site ao ser instalada. Agora funciona da mesma forma em qualquer Moodle:"
+  },
+  "whatsNewStepClick": {
+    "message": "Na página de edição de uma rubrica ou no formulário de um workshop, clique no ícone da extensão: o importador aparece nessa página."
+  },
+  "whatsNewStepAlways": {
+    "message": "Se a usa frequentemente num Moodle, clique em «Ativar sempre neste site» no mesmo menu. O Chrome pede permissão apenas para esse site e, a partir daí, o importador aparece sozinho."
+  },
+  "whatsNewPin": {
+    "message": "Dica: afixe o ícone na barra do Chrome com o botão das extensões (a peça de puzzle) para o ter à mão."
+  },
+  "whatsNewSites": {
+    "message": "Os sites que já tinha adicionado nas opções continuam a funcionar como antes."
   }
 }

@@ -26,10 +26,32 @@ Load the extension in Chrome or another Chromium-based browser:
 2. Enable Developer mode.
 3. Click "Load unpacked".
 4. Select the `extension` folder.
-5. Open an assignment rubric editor or a Workshop assessment form configured with the Rubric grading strategy on a built-in HTTPS host. Alternatively, open the extension options page to add another Moodle host.
-6. Grant the requested host permission if you add a custom Moodle site.
+5. Open an assignment rubric editor or a Workshop assessment form configured with the Rubric grading strategy on any HTTPS Moodle.
+6. Click the extension icon. The importer appears on that page.
 
-The extension does not inject itself into every website. It runs by default on the supported Xunta Moodle hosts over HTTPS and registers additional content scripts only for HTTPS Moodle hosts explicitly added by the user from the options page.
+## Activation and permissions
+
+The extension asks for no site access when it is installed. Its only
+permissions are `storage`, `scripting`, and `activeTab`.
+
+- **One click, any Moodle.** On a rubric editing page or a Workshop assessment
+  form, clicking the extension icon grants `activeTab` for that tab and injects
+  the importer. Chrome shows no permission prompt for this, and the access ends
+  when the tab navigates away.
+- **Always on one site.** The icon menu offers "Always activate on this site".
+  It requests access to that origin only (`optional_host_permissions`) and
+  registers the importer for that site's rubric and Workshop pages, so it
+  appears without clicking. The options page lists these sites, grants a
+  missing permission again, or removes a site together with its permission.
+
+Nothing runs on other websites or on other pages of a Moodle site.
+`npm run validate` fails if the manifest declares `host_permissions` or static
+`content_scripts`.
+
+Until version 1.1.0 the importer ran automatically on the Xunta Moodle hosts
+(`edu.xunta.gal` and its subdomains). People who update from those versions see
+a one-time page explaining the new activation; sites they had added in the
+options keep working.
 
 ## CSV Format
 
@@ -37,19 +59,11 @@ Each criterion uses two rows. Column A contains the criterion description. Colum
 
 Workshop grades must be unique integers between 0 and 100 within each criterion. Moodle initially exposes a limited number of Workshop level fields. If an import needs more levels, MoodlIA asks for confirmation before using Moodle's "Save and continue editing" action to create the additional fields, then resumes the import automatically. The final imported form remains open for review.
 
-Built-in Moodle hosts:
-
-- `www.edu.xunta.gal`
-- `edu.xunta.gal`
-- `centros.edu.xunta.gal`
-- `platega.edu.xunta.gal`
-- `eva.edu.xunta.gal`
-
 ## Localization
 
 The extension UI supports English, Spanish, French, German, Portuguese, Galician, Catalan, and Basque.
 
-Spanish is the default locale. Chrome-supported manifest locales are stored in `extension/_locales`. Portuguese is available as generic `pt` plus dedicated `pt_PT` and `pt_BR` variants. Galician (`gl`) and Basque (`eu`) are also included there for compatibility, and the content script loads those translations directly at runtime so the in-page importer UI can use them even when the browser store does not expose them as listing locales.
+Spanish is the default locale. Chrome-supported manifest locales are stored in `extension/_locales`. Portuguese is available as generic `pt` plus dedicated `pt_PT` and `pt_BR` variants. Galician (`gl`) and Basque (`eu`) are also included there for compatibility, and the importer, the icon menu, the options page, and the what's-new page load those translations directly at runtime, because `chrome.i18n` does not offer them.
 
 ## Packaging
 

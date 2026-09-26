@@ -3,16 +3,11 @@ const RubricandoHostAccess = {
 	storageArea: 'local',
 	legacyStorageArea: 'sync',
 	contentScriptPrefix: 'rubricando-site-',
+	contentStyles: ['styles/main.css', 'styles/toast.css', 'styles/dropzone.css'],
+	contentScripts: ['scripts/workbook.js', 'scripts/rubric-model.js', 'scripts/i18n.js', 'scripts/content.js'],
 	rubricPathSuffixes: [
 		'/grade/grading/form/rubric/edit.php*',
 		'/mod/workshop/editform.php*'
-	],
-	builtInHosts: [
-		'www.edu.xunta.gal',
-		'edu.xunta.gal',
-		'centros.edu.xunta.gal',
-		'platega.edu.xunta.gal',
-		'eva.edu.xunta.gal'
 	],
 
 	normalizeInput(rawValue) {
@@ -55,6 +50,24 @@ const RubricandoHostAccess = {
 		return normalizedBasePath.startsWith('/') ? normalizedBasePath : `/${normalizedBasePath}`;
 	},
 
+	// True for an HTTPS assignment rubric editor or Workshop form URL on any Moodle.
+	isRubricPageUrl(rawUrl) {
+		let parsedUrl;
+		try {
+			parsedUrl = new URL(String(rawUrl || ''));
+		} catch (_error) {
+			return false;
+		}
+
+		if (parsedUrl.protocol !== 'https:') {
+			return false;
+		}
+
+		return this.rubricPathSuffixes
+			.map(pathSuffix => pathSuffix.replace(/\*$/, ''))
+			.some(rubricPath => parsedUrl.pathname.endsWith(rubricPath));
+	},
+
 	buildSiteId(origin, basePath) {
 		const source = `${origin}${basePath}`.toLowerCase();
 		const sanitized = source.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -72,27 +85,6 @@ const RubricandoHostAccess = {
 
 		const origin = site.originPattern.replace(/\/\*$/, '');
 		return this.rubricPathSuffixes.map(pathSuffix => `${origin}${site.basePath}${pathSuffix}`);
-	},
-
-	getBuiltInSites() {
-		return this.builtInHosts.map(host => {
-			const origin = `https://${host}`;
-			return {
-				id: this.buildSiteId(origin, ''),
-				originPattern: `${origin}/*`,
-				basePath: '',
-				label: origin,
-				builtIn: true,
-				matches: this.rubricPathSuffixes.flatMap(pathSuffix => [
-					`${origin}${pathSuffix}`,
-					`${origin}/*${pathSuffix}`
-				])
-			};
-		});
-	},
-
-	isBuiltInSite(site) {
-		return this.getBuiltInSites().some(builtInSite => builtInSite.originPattern === site.originPattern);
 	},
 
 	async getStoredSites() {
@@ -114,7 +106,6 @@ const RubricandoHostAccess = {
 			if (!site || typeof site !== 'object') continue;
 			if (!site.originPattern?.startsWith('https://')) continue;
 			if (!site.id || seenIds.has(site.id)) continue;
-			if (this.isBuiltInSite(site)) continue;
 
 			seenIds.add(site.id);
 			normalizedSites.push(site);
@@ -142,6 +133,24 @@ const RubricandoHostAccess = {
 
 		await chrome.storage[this.storageArea].set({ [this.storageKey]: legacySites });
 		await chrome.storage[this.legacyStorageArea].remove(this.storageKey);
+	},
+
+	async findStoredSite(site) {
+		const sites = await this.getStoredSites();
+		return sites.find(storedSite => storedSite.id === site.id) || null;
+	},
+
+	async addStoredSite(site) {
+		const sites = await this.getStoredSites();
+		if (!sites.some(storedSite => storedSite.id === site.id)) {
+			sites.push(site);
+			await this.saveStoredSites(sites);
+		}
+	},
+
+	async removeStoredSite(site) {
+		const sites = await this.getStoredSites();
+		await this.saveStoredSites(sites.filter(storedSite => storedSite.id !== site.id));
 	},
 
 	async hasOriginPermission(originPattern) {
@@ -176,8 +185,8 @@ const RubricandoHostAccess = {
 		const registrations = this.dedupeRegistrations(grantedSites.map(site => ({
 			id: this.buildContentScriptId(site),
 			matches: this.buildMatches(site),
-			css: ['styles/main.css', 'styles/toast.css', 'styles/dropzone.css'],
-			js: ['scripts/workbook.js', 'scripts/rubric-model.js', 'scripts/i18n.js', 'scripts/content.js'],
+			css: this.contentStyles,
+			js: this.contentScripts,
 			runAt: 'document_idle',
 			persistAcrossSessions: true
 		})));

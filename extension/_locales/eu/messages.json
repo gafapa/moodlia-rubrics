@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "$CRITERION$ irizpidea ez da baliozkoa Tailerrerako. Puntuazioek 0 eta 100 arteko zenbaki oso bakarrak izan behar dute.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "Tailer honek dagoeneko errubrika bat du. CSV fitxategiaren edukiarekin ordeztu nahi duzu?"
@@ -63,7 +67,7 @@
     "message": "Baimendutako Moodle guneak"
   },
   "optionsIntro": {
-    "message": "Gehitu MoodlIA Rubrics automatikoki exekutatu behar den Moodle gune bakoitza. Hemen baimentzen dituzun hostetan bakarrik aktibatuko da hedapena."
+    "message": "Inportatzailea automatikoki aktibatzen den Moodle guneak. Beste edozein Moodletan, sakatu luzapenaren ikonoa errubrikaren orrian."
   },
   "optionsInputLabel": {
     "message": "Moodle URLa"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Moodle gunea ondo kendu da."
   },
-  "optionsBuiltIn": {
-    "message": "Barne"
+  "optionsPermissionMissing": {
+    "message": "Baimenik gabe"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "Moodle gune hau lehenespenez sartuta dago."
+  "optionsGrant": {
+    "message": "Eman baimena"
+  },
+  "popupNotRubricPage": {
+    "message": "Ireki Moodlen errubrika bat editatzeko orria edo tailer baten ebaluazio-formularioa, eta sakatu berriro ikono hau."
+  },
+  "popupActivated": {
+    "message": "Inportatzailea aktibatuta dago orri honetan."
+  },
+  "popupActivationFailed": {
+    "message": "Ezin izan da inportatzailea aktibatu orri honetan."
+  },
+  "popupAlwaysHint": {
+    "message": "Ikonoa aldiro sakatu behar ez izateko, aktibatu automatikoki Moodle honetan. Chromek gune honetarako baino ez dizu baimena eskatuko."
+  },
+  "popupAlwaysButton": {
+    "message": "Aktibatu beti gune honetan"
+  },
+  "popupAlwaysOn": {
+    "message": "Automatikoki aktibatzen da gune honetan."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Utzi gune honetan aktibatzeari"
+  },
+  "popupManageSites": {
+    "message": "Kudeatu guneak"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "MoodlIA Rubrics-en berritasunak"
+  },
+  "whatsNewTitle": {
+    "message": "MoodlIA Rubrics aldatu egin da"
+  },
+  "whatsNewIntro": {
+    "message": "1.2.0 bertsiotik aurrera, luzapena ez da berez aktibatzen Xuntaren Moodleetan, eta instalatzean ez du baimenik eskatzen inongo gunetarako. Orain berdin dabil edozein Moodletan:"
+  },
+  "whatsNewStepClick": {
+    "message": "Errubrika bat editatzeko orrian edo tailer baten formularioan, sakatu luzapenaren ikonoa: inportatzailea orri horretan agertuko da."
+  },
+  "whatsNewStepAlways": {
+    "message": "Moodle batean sarri erabiltzen baduzu, sakatu «Aktibatu beti gune honetan» menu berean. Chromek gune horretarako baino ez dizu baimena eskatuko, eta hortik aurrera inportatzailea berez agertuko da."
+  },
+  "whatsNewPin": {
+    "message": "Aholkua: finkatu ikonoa Chromeren barran luzapenen botoiarekin (puzzle-pieza) eskura izateko."
+  },
+  "whatsNewSites": {
+    "message": "Aukeretan lehendik gehitutako guneek lehen bezala funtzionatzen dute."
   }
 }

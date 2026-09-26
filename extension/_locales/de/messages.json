@@ -39,7 +39,11 @@
   },
   "workshopInvalidCriterion": {
     "message": "Kriterium $CRITERION$ ist für Workshop ungültig. Bewertungen müssen eindeutige ganze Zahlen zwischen 0 und 100 sein.",
-    "placeholders": { "criterion": { "content": "$1" } }
+    "placeholders": {
+      "criterion": {
+        "content": "$1"
+      }
+    }
   },
   "workshopReplaceConfirmation": {
     "message": "Dieser Workshop enthält bereits ein Bewertungsraster. Durch den CSV-Inhalt ersetzen?"
@@ -63,7 +67,7 @@
     "message": "Erlaubte Moodle-Seiten"
   },
   "optionsIntro": {
-    "message": "Füge jede Moodle-Seite hinzu, auf der MoodlIA Rubrics automatisch ausgeführt werden soll. Die Erweiterung aktiviert sich nur auf Hosts, die du hier erlaubst."
+    "message": "Moodle-Sites, auf denen sich der Importer automatisch aktiviert. Auf jedem anderen Moodle klicken Sie auf der Bewertungsrasterseite auf das Erweiterungssymbol."
   },
   "optionsInputLabel": {
     "message": "Moodle-URL"
@@ -98,10 +102,55 @@
   "optionsRemoved": {
     "message": "Moodle-Seite erfolgreich entfernt."
   },
-  "optionsBuiltIn": {
-    "message": "Enthalten"
+  "optionsPermissionMissing": {
+    "message": "Keine Berechtigung"
   },
-  "optionsAlreadyBuiltIn": {
-    "message": "Diese Moodle-Seite ist bereits standardm??ig enthalten."
+  "optionsGrant": {
+    "message": "Berechtigung erteilen"
+  },
+  "popupNotRubricPage": {
+    "message": "Öffnen Sie in Moodle die Bearbeitungsseite eines Bewertungsrasters oder das Bewertungsformular einer Gegenseitigen Beurteilung und klicken Sie erneut auf dieses Symbol."
+  },
+  "popupActivated": {
+    "message": "Importer auf dieser Seite aktiviert."
+  },
+  "popupActivationFailed": {
+    "message": "Der Importer konnte auf dieser Seite nicht aktiviert werden."
+  },
+  "popupAlwaysHint": {
+    "message": "Damit Sie nicht jedes Mal auf das Symbol klicken müssen, aktivieren Sie ihn automatisch auf diesem Moodle. Chrome fragt nur für diese Site nach der Berechtigung."
+  },
+  "popupAlwaysButton": {
+    "message": "Auf dieser Site immer aktivieren"
+  },
+  "popupAlwaysOn": {
+    "message": "Wird auf dieser Site automatisch aktiviert."
+  },
+  "popupAlwaysOffButton": {
+    "message": "Auf dieser Site nicht mehr aktivieren"
+  },
+  "popupManageSites": {
+    "message": "Sites verwalten"
+  },
+  "whatsNewDocumentTitle": {
+    "message": "Neuigkeiten in MoodlIA Rubrics"
+  },
+  "whatsNewTitle": {
+    "message": "MoodlIA Rubrics hat sich geändert"
+  },
+  "whatsNewIntro": {
+    "message": "Seit Version 1.2.0 aktiviert sich die Erweiterung nicht mehr von selbst auf den Moodle-Sites der Xunta und fragt bei der Installation nach keiner Site-Berechtigung. Sie funktioniert jetzt auf jedem Moodle gleich:"
+  },
+  "whatsNewStepClick": {
+    "message": "Klicken Sie auf der Bearbeitungsseite eines Bewertungsrasters oder im Formular einer Gegenseitigen Beurteilung auf das Erweiterungssymbol: Der Importer erscheint auf dieser Seite."
+  },
+  "whatsNewStepAlways": {
+    "message": "Wenn Sie sie oft auf einem Moodle verwenden, klicken Sie im selben Menü auf „Auf dieser Site immer aktivieren“. Chrome fragt nur für diese Site nach der Berechtigung, danach erscheint der Importer von selbst."
+  },
+  "whatsNewPin": {
+    "message": "Tipp: Heften Sie das Symbol über die Erweiterungsschaltfläche (das Puzzleteil) an die Chrome-Symbolleiste an, um es griffbereit zu haben."
+  },
+  "whatsNewSites": {
+    "message": "Sites, die Sie bereits in den Optionen hinzugefügt haben, funktionieren weiterhin wie bisher."
   }
 }

@@ -1,0 +1,131 @@
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-strong: #eef3ec;
+  --text: #172018;
+  --muted: #5f6b60;
+  --border: #d6dfd3;
+  --accent: #136b49;
+  --accent-dark: #0d5238;
+  --danger: #c64c4c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 320px;
+  background: var(--surface);
+  color: var(--text);
+  font: 14px/1.45 "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.popup {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.popup-header h1 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.popup-status {
+  margin: 0;
+}
+
+.popup-status.success {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.popup-status.error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.popup-always {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-strong);
+}
+
+.popup-always p {
+  margin: 0;
+}
+
+.popup-site {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.popup-hint,
+.popup-on {
+  color: var(--muted);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  background: var(--accent-dark);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button.secondary {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+button.secondary:hover,
+button.secondary:focus-visible {
+  background: var(--surface-strong);
+}
+
+button.link {
+  justify-self: start;
+  padding: 0;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+button.link:hover,
+button.link:focus-visible {
+  background: none;
+  color: var(--accent-dark);
+}
+
+.popup-footer {
+  display: flex;
+}

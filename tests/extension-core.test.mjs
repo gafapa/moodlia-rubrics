@@ -41,7 +41,7 @@ test('host access normalizes Moodle base paths and rejects insecure hosts', asyn
   assert.throws(() => access.normalizeInput('http://campus.example.edu'), /Only HTTPS/);
 });
 
-test('host access recognizes Workshop rubric URLs and built-in nested Moodle paths', async () => {
+test('host access recognizes Workshop rubric URLs on any Moodle base path', async () => {
   const sandbox = { URL };
   await evaluate('extension/scripts/host-access.js', sandbox);
   const access = sandbox.RubricandoHostAccess;
@@ -52,22 +52,51 @@ test('host access recognizes Workshop rubric URLs and built-in nested Moodle pat
     'https://campus.example.edu/moodle/grade/grading/form/rubric/edit.php*',
     'https://campus.example.edu/moodle/mod/workshop/editform.php*'
   ]);
-
-  const builtInMatches = access.getBuiltInSites()[0].matches;
-  assert.ok(builtInMatches.includes('https://www.edu.xunta.gal/mod/workshop/editform.php*'));
-  assert.ok(builtInMatches.includes('https://www.edu.xunta.gal/*/mod/workshop/editform.php*'));
 });
 
-test('host access removes duplicates and built-in sites from stored custom sites', async () => {
+test('rubric pages are recognized on any HTTPS Moodle, and nothing else is', async () => {
+  const sandbox = { URL };
+  await evaluate('extension/scripts/host-access.js', sandbox);
+  const access = sandbox.RubricandoHostAccess;
+
+  for (const url of [
+    'https://campus.example.edu/grade/grading/form/rubric/edit.php?areaid=4',
+    'https://www.edu.xunta.gal/centros/ies/aulavirtual/mod/workshop/editform.php?cmid=12',
+    'https://moodle.example.org/moodle/mod/workshop/editform.php'
+  ]) {
+    assert.equal(access.isRubricPageUrl(url), true, url);
+  }
+  for (const url of [
+    'http://campus.example.edu/grade/grading/form/rubric/edit.php',
+    'https://campus.example.edu/course/view.php?id=2',
+    'https://campus.example.edu/grade/grading/form/rubric/edit.php.bak',
+    'chrome://extensions/',
+    '',
+    undefined
+  ]) {
+    assert.equal(access.isRubricPageUrl(url), false, String(url));
+  }
+});
+
+test('host access removes duplicates and insecure entries from stored sites', async () => {
   const sandbox = { URL };
   await evaluate('extension/scripts/host-access.js', sandbox);
   const access = sandbox.RubricandoHostAccess;
   const custom = access.normalizeInput('https://campus.example.edu/moodle');
-  const builtIn = access.getBuiltInSites()[0];
-  const normalized = access.normalizeStoredSites([custom, custom, builtIn, { id: 'bad', originPattern: 'http://bad.test/*' }]);
+  const xunta = access.normalizeInput('https://www.edu.xunta.gal/grade/grading/form/rubric/edit.php');
+  const normalized = access.normalizeStoredSites([custom, custom, xunta, { id: 'bad', originPattern: 'http://bad.test/*' }]);
 
-  assert.equal(normalized.length, 1);
-  assert.equal(normalized[0].id, custom.id);
+  assert.deepEqual(Array.from(normalized, site => site.id), [custom.id, xunta.id]);
+});
+
+test('the manifest asks for no site access at install time', async () => {
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'extension/manifest.json'), 'utf8'));
+
+  assert.ok(manifest.permissions.includes('activeTab'));
+  assert.equal(manifest.host_permissions, undefined);
+  assert.equal(manifest.content_scripts, undefined);
+  assert.deepEqual(manifest.optional_host_permissions, ['https://*/*']);
+  assert.equal(manifest.action.default_popup, 'popup/index.html');
 });
 
 test('rubric model maps paired CSV rows to criteria and levels', async () => {
@@ -125,6 +154,36 @@ test('rubric model rejects missing level grades before changing Moodle', async (
     A1: { v: 'Criterion' },
     B1: { v: 'Level without grade' }
   }), /does not have a grade/);
+});
+
+test('people updating from before 1.2.0 see the what\'s-new page once; new installs and later updates do not', async () => {
+  async function openedTabsFor(details) {
+    const listeners = {};
+    const event = (name) => ({ addListener: (listener) => { listeners[name] = listener; } });
+    const opened = [];
+    const sandbox = {
+      importScripts() {},
+      console,
+      RubricandoHostAccess: { syncRegisteredSites: async () => [], storageArea: 'local', storageKey: 'allowedMoodleSites' },
+      chrome: {
+        runtime: { onInstalled: event('installed'), onStartup: event('startup'), onMessage: event('message'), getURL: (file) => `chrome-extension://id/${file}` },
+        storage: { onChanged: event('storage') },
+        permissions: { onAdded: event('added'), onRemoved: event('removed') },
+        tabs: { create: async (options) => { opened.push(options.url); } }
+      }
+    };
+    await evaluate('extension/scripts/service-worker.js', sandbox);
+    listeners.installed(details);
+    await new Promise((resolve) => setImmediate(resolve));
+    return opened;
+  }
+
+  assert.deepEqual(await openedTabsFor({ reason: 'update', previousVersion: '1.1.0' }), ['chrome-extension://id/whats-new/index.html']);
+  assert.deepEqual(await openedTabsFor({ reason: 'update', previousVersion: '1.0.21' }), ['chrome-extension://id/whats-new/index.html']);
+  assert.deepEqual(await openedTabsFor({ reason: 'update', previousVersion: '1.2.0' }), []);
+  assert.deepEqual(await openedTabsFor({ reason: 'update', previousVersion: '1.3.0' }), []);
+  assert.deepEqual(await openedTabsFor({ reason: 'install' }), []);
+  assert.deepEqual(await openedTabsFor({ reason: 'chrome_update', previousVersion: '1.1.0' }), []);
 });
 
 async function evaluate(relativePath, sandbox) {
