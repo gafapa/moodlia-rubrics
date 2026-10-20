@@ -2,17 +2,15 @@
 
 MoodlIA Rubrics is a browser extension for importing Moodle rubrics from CSV and Excel `.xlsx` files into assignments and Workshops.
 
-## Project Structure
+[Status](#status) · [Getting started](#getting-started) · [Usage](#usage) · [Development](#development) · [Security and privacy](#security-and-privacy) · [Documentation](#documentation) · [License](#license)
 
-- `extension/`: Manifest V3 extension source loaded by the browser.
-- `extension/scripts/content.js`: Moodle rubric importer content script.
-- `extension/scripts/workbook.js`: CSV and Excel workbook parser.
-- `extension/scripts/rubric-model.js`: Shared spreadsheet-to-rubric mapping and Workshop validation.
-- `extension/styles/`: Content script styles.
-- `web/`: Static landing page source.
-- `scripts/`: Local project validation and packaging scripts.
+## Status
 
-## Development
+Implemented Chromium extension. Current manifest version: `1.2.1`. Imports rubric data into Moodle assignment and Workshop forms; the teacher reviews and saves the result.
+
+## Getting started
+
+### Local launch
 
 Run validation from the project root:
 
@@ -29,7 +27,61 @@ Load the extension in Chrome or another Chromium-based browser:
 5. Open an assignment rubric editor or a Workshop assessment form configured with the Rubric grading strategy on any HTTPS Moodle.
 6. Click the extension icon. The importer appears on that page.
 
-## Activation and permissions
+## Usage
+
+### CSV and Excel format
+
+Each criterion uses two rows. Column A contains the criterion description. Columns B onward contain level definitions, and the cells directly below them contain the corresponding grades.
+
+Use a `.csv` file or save the same layout as an Excel `.xlsx` workbook. For Excel, the importer reads the first worksheet. Legacy `.xls` workbooks are not supported. Text, numeric grades, and formulas with saved results are read; recalculate and save a workbook before importing if its grades use formulas.
+
+Workshop grades must be unique integers between 0 and 100 within each criterion. Moodle initially exposes a limited number of Workshop level fields. If an import needs more levels, MoodlIA asks for confirmation before using Moodle's "Save and continue editing" action to create the additional fields, then resumes the import automatically. The final imported form remains open for review.
+
+### Localization
+
+The extension UI supports English, Spanish, French, German, Portuguese, Galician, Catalan, and Basque.
+
+Spanish is the default locale. Chrome-supported manifest locales are stored in `extension/_locales`. Portuguese is available as generic `pt` plus dedicated `pt_PT` and `pt_BR` variants. Galician (`gl`) and Basque (`eu`) are also included there for compatibility, and the importer, the icon menu, the options page, and the what's-new page load those translations directly at runtime, because `chrome.i18n` does not offer them.
+
+## Development
+
+### Project structure
+
+- `extension/`: Manifest V3 extension source loaded by the browser.
+- `extension/scripts/content.js`: Moodle rubric importer content script.
+- `extension/scripts/workbook.js`: CSV and Excel workbook parser.
+- `extension/scripts/rubric-model.js`: Shared spreadsheet-to-rubric mapping and Workshop validation.
+- `extension/styles/`: Content script styles.
+- `web/`: Static landing page source.
+- `scripts/`: Local project validation and packaging scripts.
+
+### Packaging
+
+Build the landing page and create a distributable ZIP file:
+
+```bash
+npm run build
+```
+
+The generated website and ZIP file are written to `dist/`.
+
+### Runtime footprint
+
+The extension includes a small, locally bundled ZIP decoder (`fflate`, MIT license) for `.xlsx` files. CSV parsing and Excel XML parsing use browser-native APIs. Files are processed in the browser.
+
+### Quality checks
+
+```bash
+npm run check
+```
+
+The suite validates the extension package, CSV and Excel parsing, rubric mapping, Workshop grade constraints, Moodle host normalization, optional permissions, and stored-site deduplication.
+
+## Security and privacy
+
+Rubric files are parsed locally. Site activation and optional permissions are described below. The permanent public policy is [Rubrics privacy](https://moodlia.com/privacy/rubrics.html).
+
+### Activation and permissions
 
 The extension asks for no site access when it is installed. Its only
 permissions are `storage`, `scripting`, and `activeTab`.
@@ -53,41 +105,17 @@ Until version 1.1.0 the importer ran automatically on the Xunta Moodle hosts
 a one-time page explaining the new activation; sites they had added in the
 options keep working.
 
-## CSV and Excel Format
+## Documentation
 
-Each criterion uses two rows. Column A contains the criterion description. Columns B onward contain level definitions, and the cells directly below them contain the corresponding grades.
+- [Project Pages](https://gafapa.github.io/moodlia-rubrics/)
 
-Use a `.csv` file or save the same layout as an Excel `.xlsx` workbook. For Excel, the importer reads the first worksheet. Legacy `.xls` workbooks are not supported. Text, numeric grades, and formulas with saved results are read; recalculate and save a workbook before importing if its grades use formulas.
+Build the repository documentation portal with `python tools/build-project-page.py`. Its status comes from this README; purpose and first steps are maintained in `docs/project-page.json`. The `pages.yml` workflow publishes the portal without deploying the application or changing `moodlia.com`.
 
-Workshop grades must be unique integers between 0 and 100 within each criterion. Moodle initially exposes a limited number of Workshop level fields. If an import needs more levels, MoodlIA asks for confirmation before using Moodle's "Save and continue editing" action to create the additional fields, then resumes the import automatically. The final imported form remains open for review.
+Spreadsheet-to-rubric import; [Corrector](https://github.com/gafapa/moodlia-corrector) provides the separate AI-assisted grading workflow.
 
-## Localization
-
-The extension UI supports English, Spanish, French, German, Portuguese, Galician, Catalan, and Basque.
-
-Spanish is the default locale. Chrome-supported manifest locales are stored in `extension/_locales`. Portuguese is available as generic `pt` plus dedicated `pt_PT` and `pt_BR` variants. Galician (`gl`) and Basque (`eu`) are also included there for compatibility, and the importer, the icon menu, the options page, and the what's-new page load those translations directly at runtime, because `chrome.i18n` does not offer them.
-
-## Packaging
-
-Build the landing page and create a distributable ZIP file:
-
-```bash
-npm run build
-```
-
-The generated website and ZIP file are written to `dist/`.
-
-## Runtime Footprint
-
-The extension includes a small, locally bundled ZIP decoder (`fflate`, MIT license) for `.xlsx` files. CSV parsing and Excel XML parsing use browser-native APIs. Files are processed in the browser.
-
-## Quality Checks
-
-```bash
-npm run check
-```
-
-The suite validates the extension package, CSV and Excel parsing, rubric mapping, Workshop grade constraints, Moodle host normalization, optional permissions, and stored-site deduplication.
+- [Source code](https://github.com/gafapa/moodlia-rubrics)
+- [Issue tracker](https://github.com/gafapa/moodlia-rubrics/issues)
+- [MoodlIA website](https://moodlia.com)
 
 ## License
 
