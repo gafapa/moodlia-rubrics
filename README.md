@@ -45,6 +45,10 @@ Spanish is the default locale. Chrome-supported manifest locales are stored in `
 
 ## Development
 
+Development dependency audit and packaging were revalidated on 24 October 2026.
+The lockfile includes patched `source-map-js` and `undici`; `npm audit` reports
+zero vulnerabilities. These tools are not bundled into the extension.
+
 ### Project structure
 
 - `extension/`: Manifest V3 extension source loaded by the browser.

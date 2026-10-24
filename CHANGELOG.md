@@ -6,6 +6,9 @@
 
 ## Unreleased
 
+- Update development dependency resolutions to remove the `source-map-js` and
+  `undici` advisories blocking CI; retain the existing extension runtime.
+
 - Import assignment and Workshop rubrics from Excel `.xlsx` workbooks, using the
   first worksheet and the same two-row-per-criterion layout as CSV files.
 - Keep CSV support and update the file picker, translations, website, and
